@@ -95,6 +95,11 @@
       <version>2.0.6</version>
     </dependency>
 
+    <dependency>
+      <groupId>com.rhcj</groupId>
+      <artifactId>com.rhcj.commons</artifactId>
+      <version>RELEASE</version>
+    </dependency>
 
 
   </dependencies>

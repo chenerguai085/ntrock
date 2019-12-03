@@ -29,6 +29,16 @@ public enum RockEnum {
     HL_Delete_Openuser_REQ("Delete_Openuser_REQ"),
     HL_Clear_Openuser_REQ("Clear_Openuser_REQ"),
     HL_OpenLock_REQ("OpenLock_REQ"),
+    PMS_CODE("RWKJ"), //与携住对接的PmsCode值
+
+    GET_TOKEN_API("/token"), //获取token url https://open.xiezhuwang.com
+
+    FACE_ADD_API("/api/FaceCollect/ReceiveFace"), //增加人脸url
+
+    XIEZHU_USERNAME("rwkj"),  //获取token信息的用户名
+
+    XIEZHU_PASSWORD("rwkj123"), //获取token信息的密码
+
     ;
 
 

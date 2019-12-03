@@ -4,6 +4,7 @@ public enum CompanyBusEnum {
 
     XD_NETROCK(1, "悉点互联网门锁","com.rh.netrock.handle.impl.XidianRockImpl"),
     HLS_NETROCK(2,"豪力士互联网门锁","com.rh.netrock.handle.impl.HlisRockImpl"),
+    XIEZ_FACEROCK(3,"携住人脸识别门锁","com.rh.netrock.handle.impl.XieZFaceRockImpl"),
     ;
 
     private Integer code;

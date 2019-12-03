@@ -5,6 +5,7 @@ public enum OpenTypeEnum {
     ICCARD(1, "iccard"),     //刷卡
     IDCARD(2, "idcard"),// 刷身份证
     PASSWORD(3, "password"), //密码类型
+    FACE(4, "face"), //刷人脸开门
     ;
 
     private Integer code;

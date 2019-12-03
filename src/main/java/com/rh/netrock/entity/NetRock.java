@@ -14,12 +14,12 @@ public class NetRock implements Serializable {
 
 
     /**
-     * 开门的唯一标识  豪利士标识roomId ， 悉点标识门锁序列号
+     * 开门的唯一标识  豪利士标识roomId ， 悉点标识门锁序列号 携住-RoomNo
      */
     private String deviceSerial;
 
     /**
-     * 门锁型号
+     * 门锁型号  携住-表示HotelId字段
      */
     private String productModel;
 
@@ -58,6 +58,44 @@ public class NetRock implements Serializable {
      * 开门类型
      */
     private OpenTypeEnum openTypeEnum;
+
+    /**
+     * 姓名 -携住人脸设备提供
+     */
+    private String name;
+    /**
+     * 姓名 -证件号
+     */
+    private String idCardNo;
+    /**
+     * 手机号
+     */
+    private String mobile;
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIdCardNo() {
+        return idCardNo;
+    }
+
+    public void setIdCardNo(String idCardNo) {
+        this.idCardNo = idCardNo;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
     public OpenTypeEnum getOpenTypeEnum() {
         return openTypeEnum;
