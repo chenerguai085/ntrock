@@ -16,7 +16,6 @@ import java.util.Map;
  */
 public class ParseUtil {
 
-
     /**
      * remark: 封装webservice 请求xml数据
      *

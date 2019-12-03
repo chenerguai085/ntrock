@@ -1,12 +1,10 @@
-package com.rh.netrock.handle.impl;
+package com.rh.netrock.handle;
 
 import com.alibaba.fastjson.JSONObject;
 import com.rh.netrock.entity.NetRock;
-import com.rh.netrock.entity.RockReqResult;
 import com.rh.netrock.enums.ErrMsgEnum;
 import com.rh.netrock.enums.RegEnum;
 import com.rh.netrock.enums.RockEnum;
-import com.rh.netrock.handle.AbstractHandle;
 import com.rh.netrock.util.RockCommonUtil;
 import org.apache.commons.lang3.StringUtils;
 
@@ -15,16 +13,21 @@ import org.apache.commons.lang3.StringUtils;
  * @remark:
  * @date: 2019/11/29
  */
-public class XidianRockImpl extends AbstractHandle {
+public class XidianRockImpl{
 
-    @Override
-    public String add(NetRock netRock) {
+
+    public static String add(NetRock netRock) throws Exception {
         paramsVersign(netRock);
+
+        if (StringUtils.isBlank(netRock.getDomain())){
+            netRock.setDomain(RockEnum.XIDIAN_DOMAIN.getMsg());
+        }
+
         JSONObject jsonObject = new JSONObject();
 
         String result = "";
         if (!netRock.getStartTime().matches(RegEnum.TIME_REG.getMsg()) || !netRock.getEndTime().matches(RegEnum.TIME_REG.getMsg()))
-            throw new RuntimeException("输入时间格式有误");
+            throw new Exception("输入时间格式有误");
 
         jsonObject.put("deviceSerial", netRock.getDeviceSerial());
         jsonObject.put("productModel", netRock.getProductModel());
@@ -33,7 +36,7 @@ public class XidianRockImpl extends AbstractHandle {
         jsonObject.put("endTime", netRock.getEndTime());
         if (3 == netRock.getOpenTypeEnum().getCode()) {
             if (!netRock.getCardData().matches(RegEnum.PWD_REG.getMsg()))
-                throw new RuntimeException("输入密码格式有误");
+                throw new Exception("输入密码格式有误");
 
             jsonObject.put("pwd", netRock.getCardData());
 
@@ -50,20 +53,23 @@ public class XidianRockImpl extends AbstractHandle {
     }
 
 
-    @Override
-    public void delete(NetRock netRock) {
+    public static void delete(NetRock netRock) throws Exception {
         JSONObject jsonObject = new JSONObject();
+
+        if (StringUtils.isBlank(netRock.getDomain())){
+            netRock.setDomain(RockEnum.XIDIAN_DOMAIN.getMsg());
+        }
 
         if (StringUtils.isBlank(netRock.getDeviceSerial()) || StringUtils.isBlank(netRock.getProductModel())
           || StringUtils.isBlank(netRock.getCardData()))
-            throw new RuntimeException(ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
+            throw new Exception(ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
 
         jsonObject.put("deviceSerial", netRock.getDeviceSerial());
         jsonObject.put("productModel", netRock.getProductModel());
 
         if (3 == netRock.getOpenTypeEnum().getCode()) {
             if (!netRock.getCardData().matches(RegEnum.PWD_REG.getMsg()))
-                throw new RuntimeException("输入密码格式有误");
+                throw new Exception("输入密码格式有误");
 
             jsonObject.put("pwd", netRock.getCardData());
 
@@ -87,12 +93,14 @@ public class XidianRockImpl extends AbstractHandle {
      * @author:chenj
      * @date: 2019/11/29
      */
-
-    @Override
-    public String update(NetRock netRock) {
-
+    public static String update(NetRock netRock) throws Exception {
         //校验参数
         paramsVersign(netRock);
+
+        if (StringUtils.isBlank(netRock.getDomain())){
+            netRock.setDomain(RockEnum.XIDIAN_DOMAIN.getMsg());
+        }
+
         JSONObject jsonObject = new JSONObject();
 
         //公共字段
@@ -104,18 +112,18 @@ public class XidianRockImpl extends AbstractHandle {
         if (3 == netRock.getOpenTypeEnum().getCode()) {
 
             if (StringUtils.isBlank(netRock.getOldCardData())) {
-                throw new RuntimeException("旧密码不能为空");
+                throw new Exception("旧密码不能为空");
             }
 
             if (!netRock.getCardData().matches(RegEnum.PWD_REG.getMsg()) || !netRock.getOldCardData().matches(RegEnum.PWD_REG.getMsg()))
-                throw new RuntimeException("输入密码格式有误");
+                throw new Exception("输入密码格式有误");
 
             jsonObject.put("newPwd", netRock.getCardData());
             jsonObject.put("oldPwd", netRock.getOldCardData());
 
-            RockReqResult rockReqResult = RockCommonUtil.rockCommonReply(netRock.getDomain() + RockEnum.UPDATE_PWD_API.getMsg(), jsonObject.toString());
+            int resp = RockCommonUtil.rockCommonReply(netRock.getDomain() + RockEnum.UPDATE_PWD_API.getMsg(), jsonObject.toString());
 
-            if (rockReqResult.getSuccess()) {
+            if (1 == resp) {
 
                 return netRock.getCardData();
             }
@@ -123,9 +131,9 @@ public class XidianRockImpl extends AbstractHandle {
         } else if (1 == netRock.getOpenTypeEnum().getCode()) {
             jsonObject.put("cardNo", netRock.getCardData());
 
-            RockReqResult rockReqResult = RockCommonUtil.rockCommonReply(netRock.getDomain() + RockEnum.UPDATE_CARD_API.getMsg(), jsonObject.toString());
+            int resp = RockCommonUtil.rockCommonReply(netRock.getDomain() + RockEnum.UPDATE_CARD_API.getMsg(), jsonObject.toString());
 
-            if (rockReqResult.getSuccess()) {
+            if (1==resp) {
 
                 return netRock.getCardData();
             }
@@ -142,7 +150,7 @@ public class XidianRockImpl extends AbstractHandle {
      * @author:chenj
      * @date: 2019/11/29
      */
-    private void buildReqDelete(JSONObject jsonObject, String url) {
+    private static void buildReqDelete(JSONObject jsonObject, String url) throws Exception {
 
         RockCommonUtil.rockCommonReply(url, jsonObject.toString());
     }
@@ -155,16 +163,16 @@ public class XidianRockImpl extends AbstractHandle {
      * @author:chenj
      * @date: 2019/11/29
      */
-    private String buildReqAdd(JSONObject jsonObject, NetRock netRock, String url) {
+    private static String buildReqAdd(JSONObject jsonObject, NetRock netRock, String url) throws Exception {
 
-        RockReqResult rockReqResult = RockCommonUtil.rockCommonReply(url, jsonObject.toString());
+        int resp = RockCommonUtil.rockCommonReply(url, jsonObject.toString());
 
-        if (rockReqResult.getSuccess()) {
+        if (1 == resp) {
 
             return netRock.getCardData();
         }
 
-        throw new RuntimeException(ErrMsgEnum.ERR.getMsg());
+        throw new Exception(ErrMsgEnum.ERR.getMsg());
     }
 
     /**
@@ -174,11 +182,11 @@ public class XidianRockImpl extends AbstractHandle {
      * @author:chenj
      * @date: 2019/11/29
      */
-    private void paramsVersign(NetRock netRock) {
+    private static void paramsVersign(NetRock netRock) throws Exception {
         if (StringUtils.isBlank(netRock.getDeviceSerial()) || StringUtils.isBlank(netRock.getProductModel())
                 || StringUtils.isBlank(netRock.getCardData()) || StringUtils.isBlank(netRock.getStartTime()) ||
-                StringUtils.isBlank(netRock.getEndTime()))
-            throw new RuntimeException(ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
+                StringUtils.isBlank(netRock.getEndTime()) || null == netRock.getOpenTypeEnum())
+            throw new Exception(ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
     }
 
 

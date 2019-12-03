@@ -12,7 +12,6 @@ import java.io.Serializable;
  */
 public class NetRock implements Serializable {
 
-
     /**
      * 开门的唯一标识  豪利士标识roomId ， 悉点标识门锁序列号 携住-RoomNo
      */
@@ -63,23 +62,25 @@ public class NetRock implements Serializable {
      * 姓名 -携住人脸设备提供
      */
     private String name;
+
     /**
-     * 姓名 -证件号
+     * 姓名 -携住人脸 请求是要加token
      */
+    private  String token;
+
+    /**
+     * 用户名 -携住人脸 获取token接口要传入用户名
+     */
+    private String userName;
+
+    /**
+     * 密码 -携住人脸 获取token接口要传入密码
+     */
+    private String password;
+
     private String idCardNo;
-    /**
-     * 手机号
-     */
+
     private String mobile;
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getIdCardNo() {
         return idCardNo;
@@ -97,6 +98,38 @@ public class NetRock implements Serializable {
         this.mobile = mobile;
     }
 
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public OpenTypeEnum getOpenTypeEnum() {
         return openTypeEnum;
     }
@@ -104,7 +137,6 @@ public class NetRock implements Serializable {
     public void setOpenTypeEnum(OpenTypeEnum openTypeEnum) {
         this.openTypeEnum = openTypeEnum;
     }
-
 
     public CompanyBusEnum getCompanyBusEnum() {
         return companyBusEnum;

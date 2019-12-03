@@ -87,19 +87,7 @@ public class HttpUtil {
      *@date: 2019/11/28
      *@return java.lang.String
      */
-    public static String postXzAddFace(String urlPath, String jsonMap, Date now,String domain) throws Exception {
-        Map<String, Object> getTokenMap = new HashMap<>();
-        getTokenMap.put("grant_type", "password");
-        getTokenMap.put("username", RockEnum.XIEZHU_USERNAME.getMsg());
-        getTokenMap.put("password", RockEnum.XIEZHU_PASSWORD.getMsg());
-
-        Token cacheToken = CacheToken.getCacheToken(RockEnum.XIEZHU_USERNAME.getMsg(), getTokenMap, now,domain);
-
-//        if (null != cacheToken.getOptionType()) {
-//            //获取token存在异常
-//            return cacheToken.getOptionMsg();
-//        }
-
+    public static String postXzAddFace(String urlPath, String jsonMap, Date now,String domain,String tokenType,String accessToken) throws Exception {
         String result = "";
         BufferedReader reader = null;
         try {
@@ -114,7 +102,8 @@ public class HttpUtil {
             // 设置文件类型:
             conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
 
-            conn.setRequestProperty("Authorization", cacheToken.getTokenType() + " " + cacheToken.getAccessToken());
+
+            conn.setRequestProperty("Authorization", tokenType + " " + accessToken);
 
             // 往服务器里面发送数据
             if (jsonMap != null) {
@@ -135,7 +124,7 @@ public class HttpUtil {
         } catch (Exception e) {
             e.printStackTrace();
 
-            throw new RuntimeException("请求人脸录入接口异常:" + e.getMessage() );
+            throw new Exception("请求人脸录入接口异常:" + e.getMessage() );
         } finally {
             if (reader != null) {
                 try {
@@ -158,12 +147,7 @@ public class HttpUtil {
      * @author:chenj
      * @date: 2019/11/23
      */
-    public static String postGetToken(String url, Map<String, Object> params, String userName, String password) throws Exception {
-        Map<String, Object> getTokenMap = new HashMap<>();
-        getTokenMap.put("grant_type", "password");
-        getTokenMap.put("username", userName);
-        getTokenMap.put("password", password);
-
+    public static String postGetToken(String url, Map<String, Object> params) throws Exception {
         PostMethod postMethod = null;
         postMethod = new PostMethod(url);
 

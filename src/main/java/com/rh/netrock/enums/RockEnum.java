@@ -39,6 +39,9 @@ public enum RockEnum {
 
     XIEZHU_PASSWORD("rwkj123"), //获取token信息的密码
 
+    XIEZHU_DOMAIN("https://open.xiezhuwang.com"),
+    HLS_DOMAIN("http://121.201.67.205:8007"),
+    XIDIAN_DOMAIN("http://gateway.seedien.com"),
     ;
 
 

@@ -2,45 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9471fc3-c63a-4ba7-86b0-67e0ceb5fbcd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entity/Token.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/impl/XieZFaceRockImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/CacheToken.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entity/NetRock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entity/NetRock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/CompanyBusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/CompanyBusEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/OpenTypeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/OpenTypeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entity/ParamsVerify.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entity/RockReqResult.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entity/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entity/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entrance/RockServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entrance/RockServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/RockEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/RockEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/AbstractHandle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/HandleSingleton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/ManagerHandle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/impl/HlisRockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/HlisRockImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/impl/XidianRockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/XidianRockImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/impl/XieZFaceRockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/XieZFaceRockImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/CacheToken.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/CopyProperties.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/HttpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/HttpUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/entity/NetRock.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/entity/ParamsVerify.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/entity/RockReqResult.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/entrance/RockServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/enums/CompanyBusEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/enums/ErrMsgEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/enums/OpenTypeEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/enums/RegEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/enums/RockEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/handle/AbstractHandle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/handle/HandleSingleton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/handle/ManagerHandle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/handle/impl/HlisRockImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/handle/impl/XidianRockImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/CopyProperties.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/HttpUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/ParseUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/RockCommonUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/WebServiceUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/netrock-RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/rh/netrock/AppTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/ParseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/ParseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/RockCommonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/RockCommonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/WebServiceUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/WebServiceUtil.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,6 +39,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="chenerguai085 &lt;18370050897@163.com&gt;" />
         <option value="chenjing085" />
         <option value="chenjing" />
       </list>
@@ -203,8 +184,16 @@
       <workItem from="1574902514382" duration="1034000" />
       <workItem from="1574988224584" duration="33637000" />
       <workItem from="1575248407904" duration="31722000" />
-      <workItem from="1575341378173" duration="10282000" />
+      <workItem from="1575341378173" duration="22988000" />
     </task>
+    <task id="LOCAL-00001" summary="新增携住人脸识别">
+      <created>1575354876939</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1575354876939</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,47 +210,31 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="新增携住人脸识别" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增携住人脸识别" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netrock/util/WebServiceUtil.java</url>
-          <line>104</line>
-          <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netrock/entrance/RockServer.java</url>
-          <line>170</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netrock/util/WebServiceUtil.java</url>
-          <line>106</line>
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netrock/util/ParseUtil.java</url>
-          <line>78</line>
+          <line>77</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/impl/XidianRockImpl.java</url>
-          <line>28</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/XidianRockImpl.java</url>
+          <line>31</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netrock/util/RockCommonUtil.java</url>
-          <line>220</line>
+          <line>26</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netrock/entrance/RockServer.java</url>
-          <line>146</line>
-          <option name="timeStamp" value="44" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netrock/entrance/RockServer.java</url>
-          <line>104</line>
+          <line>128</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -271,13 +244,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netrock/entrance/RockServer.java</url>
-          <line>52</line>
+          <line>62</line>
           <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netrock/entrance/RockServer.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
