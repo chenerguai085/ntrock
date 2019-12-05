@@ -2,19 +2,19 @@ package com.rh.netrock.enums;
 
 public enum CompanyBusEnum {
 
-    XD_NETROCK(1, "悉点互联网门锁","com.rh.netrock.handle.impl.XidianRockImpl"),
-    HLS_NETROCK(2,"豪力士互联网门锁","com.rh.netrock.handle.impl.HlisRockImpl"),
-    XIEZ_FACEROCK(3,"携住人脸识别门锁","com.rh.netrock.handle.impl.XieZFaceRockImpl"),
+    XD_NETROCK(1, "悉点互联网门锁"),
+    HLS_NETROCK(2,"豪力士互联网门锁"),
+    XIEZ_FACEROCK(3,"携住人脸识别门锁"),
+    YUNDING_NETROCK(4,"云丁互联网门锁"),
     ;
 
     private Integer code;
     private String msg;
-    private String clazz;
 
-    CompanyBusEnum(Integer code, String msg,String clazz) {
+
+    CompanyBusEnum(Integer code, String msg) {
         this.code = code;
         this.msg = msg;
-        this.clazz = clazz;
     }
 
     public static CompanyBusEnum getEnumByCode(Integer code) {
@@ -49,11 +49,4 @@ public enum CompanyBusEnum {
         this.msg = msg;
     }
 
-    public String getClazz() {
-        return clazz;
-    }
-
-    public void setClazz(String clazz) {
-        this.clazz = clazz;
-    }
 }

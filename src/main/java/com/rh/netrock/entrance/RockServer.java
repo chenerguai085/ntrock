@@ -7,6 +7,7 @@ import com.rh.netrock.enums.ErrMsgEnum;
 import com.rh.netrock.handle.HlisRockImpl;
 import com.rh.netrock.handle.XidianRockImpl;
 import com.rh.netrock.handle.XieZFaceRockImpl;
+import com.rh.netrock.handle.YunDingRockImpl;
 
 
 /**
@@ -14,7 +15,6 @@ import com.rh.netrock.handle.XieZFaceRockImpl;
  * @remark:
  * @date: 2019/11/15
  */
-
 public class RockServer {
     /**
      * remark: 新增密码/卡号
@@ -42,6 +42,9 @@ public class RockServer {
                 return result;
             case XIEZ_FACEROCK:
                 result = XieZFaceRockImpl.add(netRockIn);
+                return result;
+            case YUNDING_NETROCK:
+                result = YunDingRockImpl.add(netRockIn);
                 return result;
             default:
                 break;
@@ -77,6 +80,9 @@ public class RockServer {
                 break;
             case XIEZ_FACEROCK:
                 return;
+            case YUNDING_NETROCK:
+                YunDingRockImpl.delete(netRockIn);
+                break;
             default:
                 break;
         }
@@ -109,10 +115,13 @@ public class RockServer {
                 return "";
             case XIEZ_FACEROCK:
                 return "";
+            case YUNDING_NETROCK:
+                result = YunDingRockImpl.update(netRockIn);
+
+                return result;
             default:
                 break;
         }
-
 
         return result;
     }
@@ -174,11 +183,14 @@ public class RockServer {
                 token = XieZFaceRockImpl.getToken(netRockIn);
 
                 return token;
+            case YUNDING_NETROCK:
+                token = YunDingRockImpl.getToken(netRockIn);
+
+                return token;
             default:
                 break;
         }
-
-
+        
         return token;
     }
 

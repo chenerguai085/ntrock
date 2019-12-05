@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9471fc3-c63a-4ba7-86b0-67e0ceb5fbcd" name="Default Changelist" comment="" />
+    <list default="true" id="b9471fc3-c63a-4ba7-86b0-67e0ceb5fbcd" name="Default Changelist" comment="修改">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/YunDingRockImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entrance/RockServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entrance/RockServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/CompanyBusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/CompanyBusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/RockEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/RockEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/HttpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/HttpUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/RockCommonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/RockCommonUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/enums/RockEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rh/netrock/enums/RockEnum.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/HttpUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/HttpUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/RockCommonUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/RockCommonUtil.class" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +62,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/test/commons" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.general" />
   </component>
@@ -80,7 +91,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.RockServer">
+  <component name="RunManager" selected="Application.YunDingRockImpl">
     <configuration name="RockCommonUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rh.netrock.util.RockCommonUtil" />
       <module name="ntrock" />
@@ -133,8 +144,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="YunDingRockImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rh.netrock.handle.YunDingRockImpl" />
+      <module name="netrock" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rh.netrock.handle.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.YunDingRockImpl" />
         <item itemvalue="Application.RockServer" />
         <item itemvalue="Application.WebServiceUtil" />
         <item itemvalue="Application.RockCommonUtil" />
@@ -165,6 +190,8 @@
       <workItem from="1574988224584" duration="33637000" />
       <workItem from="1575248407904" duration="31722000" />
       <workItem from="1575341378173" duration="23048000" />
+      <workItem from="1575428318928" duration="10668000" />
+      <workItem from="1575507656235" duration="760000" />
     </task>
     <task id="LOCAL-00001" summary="新增携住人脸识别">
       <created>1575354876939</created>
@@ -191,7 +218,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -217,12 +246,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netrock/util/RockCommonUtil.java</url>
-          <line>26</line>
+          <line>30</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netrock/entrance/RockServer.java</url>
-          <line>128</line>
+          <line>137</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -232,8 +261,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netrock/entrance/RockServer.java</url>
-          <line>62</line>
+          <line>65</line>
           <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netrock/util/RockCommonUtil.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="48" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

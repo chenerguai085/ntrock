@@ -42,6 +42,13 @@ public enum RockEnum {
     XIEZHU_DOMAIN("https://open.xiezhuwang.com"),
     HLS_DOMAIN("http://121.201.67.205:8007"),
     XIDIAN_DOMAIN("http://gateway.seedien.com"),
+    YUNDING_DOMAIN("https://saas-openapi.dding.net/v2"),
+
+    YUND_TOKEN_API("/access_token"),
+    YUND_ADD_PASSWORD("/add_password"),
+    YUND_UPDATE_PASSWORD("/update_password"),
+    YUND_DELETE_PASSWORD("/delete_password"),
+
     ;
 
 
