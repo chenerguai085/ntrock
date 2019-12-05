@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9471fc3-c63a-4ba7-86b0-67e0ceb5fbcd" name="Default Changelist" comment="修改">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/YunDingRockImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entrance/RockServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entrance/RockServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/CompanyBusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/CompanyBusEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/RockEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/RockEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/HttpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/HttpUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/RockCommonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/RockCommonUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/enums/RockEnum.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rh/netrock/enums/RockEnum.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/HttpUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/HttpUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/RockCommonUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/RockCommonUtil.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,6 +21,7 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="chenjing &lt;18370050897@163.com&gt;" />
         <option value="chenerguai085 &lt;18370050897@163.com&gt;" />
         <option value="chenjing085" />
         <option value="chenjing" />
@@ -192,6 +184,7 @@
       <workItem from="1575341378173" duration="23048000" />
       <workItem from="1575428318928" duration="10668000" />
       <workItem from="1575507656235" duration="760000" />
+      <workItem from="1575509322239" duration="588000" />
     </task>
     <task id="LOCAL-00001" summary="新增携住人脸识别">
       <created>1575354876939</created>
