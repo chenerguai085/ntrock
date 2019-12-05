@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b9471fc3-c63a-4ba7-86b0-67e0ceb5fbcd" name="Default Changelist" comment="修改" />
+    <list default="true" id="b9471fc3-c63a-4ba7-86b0-67e0ceb5fbcd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/WebServiceUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/WebServiceUtil.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +190,7 @@
       <workItem from="1575341378173" duration="23048000" />
       <workItem from="1575428318928" duration="10668000" />
       <workItem from="1575507656235" duration="760000" />
-      <workItem from="1575509322239" duration="852000" />
+      <workItem from="1575509322239" duration="1918000" />
     </task>
     <task id="LOCAL-00001" summary="新增携住人脸识别">
       <created>1575354876939</created>
@@ -210,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575509928266</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="新接分支">
+      <created>1575510375314</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1575510375314</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,7 +242,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="新增携住人脸识别" />
     <MESSAGE value="修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改" />
+    <MESSAGE value="新接分支" />
+    <option name="LAST_COMMIT_MESSAGE" value="新接分支" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

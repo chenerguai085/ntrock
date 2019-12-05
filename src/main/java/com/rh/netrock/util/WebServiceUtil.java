@@ -82,28 +82,28 @@ public class WebServiceUtil {
 
     public static void main(String[] args) throws Exception {
 
-//        String string = "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><NetLockWeb xmlns=\"http://tempuri.org/\"><recdatastr>\n";
-//
-//
-//        Map<String,Object> map = new HashMap<>();
-//        map.put("RoomId","331");
-//        map.put("CardType","3");
-//        map.put("CardData","111111");
-//        map.put("BeginTime","2019-11-28 11:00:00");
-//
-//        map.put("EndTime","2019-12-03 11:00:00");
-//
-//        String domain = "http://121.201.67.205:8007";
-//
-//        String  str = ParseUtil.buildXml("Add_OpenUser_REQ", map);
-//
-//        System.out.println("str" + str);
-//        WebServiceUtil.websReq(str,domain);
-//        String  s = "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;&lt;Command name=\"Add_OpenUser_RESP\" sn=\"6\"";
-//      String a  =   s.replaceAll("&gt;",">").replaceAll("&lt;","<");
-//      String  t =    a.replaceAll("&lt;","<");
-//
-//         System.out.println(t);
+        String string = "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body><NetLockWeb xmlns=\"http://tempuri.org/\"><recdatastr>\n";
+
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("RoomId","331");
+        map.put("CardType","3");
+        map.put("CardData","111111");
+        map.put("BeginTime","2019-11-28 11:00:00");
+
+        map.put("EndTime","2019-12-03 11:00:00");
+
+        String domain = "http://121.201.67.205:8007";
+
+        String  str = ParseUtil.buildXml("Add_OpenUser_REQ", map);
+
+        System.out.println("str" + str);
+        WebServiceUtil.websReq(str,domain);
+        String  s = "&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;&lt;Command name=\"Add_OpenUser_RESP\" sn=\"6\"";
+      String a  =   s.replaceAll("&gt;",">").replaceAll("&lt;","<");
+      String  t =    a.replaceAll("&lt;","<");
+
+         System.out.println(t);
 
     }
 
