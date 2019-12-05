@@ -7,7 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ntrock" />
-        <module name="netrock" />
+        <module name="netlock" />
       </profile>
     </annotationProcessing>
   </component>

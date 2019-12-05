@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.rh.netrock</groupId>
-    <artifactId>netrock</artifactId>
+    <artifactId>netlock</artifactId>
     <version>RELEASE</version>
 
     <name>netrock</name>
