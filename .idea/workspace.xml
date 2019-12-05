@@ -2,60 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9471fc3-c63a-4ba7-86b0-67e0ceb5fbcd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/ClearLock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/DelLock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/LockBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/NetLock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/UpdateLock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HlisLockImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entity/NetRock.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entity/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/Token.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/entrance/RockServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entrance/LockServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/CompanyBusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/CompanyBusEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/ErrMsgEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/ErrMsgEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/OpenTypeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/OpenTypeEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/RegEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/RegEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/enums/RockEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/LockEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/HlisRockImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/XidianRockImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/XieZFaceRockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XieZFaceLockImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/handle/YunDingRockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/YunDingLockImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/HttpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/HttpUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/ParseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/ParseUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/RockCommonUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/RockCommonUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netrock/util/WebServiceUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/WebServiceUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/rh/netrock/AppTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/rh/netlock/AppTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/App.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/entity/NetRock.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/entity/Token.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/entrance/RockServer$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/entrance/RockServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/enums/CompanyBusEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/enums/ErrMsgEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/enums/OpenTypeEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/enums/RegEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/enums/RockEnum.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/handle/HlisRockImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/handle/XidianRockImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/handle/XieZFaceRockImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/handle/YunDingRockImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/HttpUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/ParseUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/RockCommonUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/rh/netrock/util/WebServiceUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/netrock-RELEASE.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/rh/netrock/AppTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HlisLockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HlisLockImpl.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,10 +22,10 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
+        <option value="chenjing" />
         <option value="chenjing &lt;18370050897@163.com&gt;" />
         <option value="chenerguai085 &lt;18370050897@163.com&gt;" />
         <option value="chenjing085" />
-        <option value="chenjing" />
       </list>
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -141,7 +89,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.HlisLockImpl">
+  <component name="RunManager">
     <configuration name="HlisLockImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rh.netlock.handle.HlisLockImpl" />
       <module name="netlock" />
@@ -289,7 +237,7 @@
       <workItem from="1575341378173" duration="23048000" />
       <workItem from="1575428318928" duration="10668000" />
       <workItem from="1575507656235" duration="760000" />
-      <workItem from="1575509322239" duration="14377000" />
+      <workItem from="1575509322239" duration="17053000" />
     </task>
     <task id="LOCAL-00001" summary="新增携住人脸识别">
       <created>1575354876939</created>
@@ -326,7 +274,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575511529525</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="修改">
+      <created>1575541077414</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1575541077414</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -347,10 +302,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="新增携住人脸识别" />
-    <MESSAGE value="修改" />
     <MESSAGE value="新接分支" />
     <MESSAGE value="修改main方法" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改main方法" />
+    <MESSAGE value="修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -214,4 +214,58 @@ public class HlisLockImpl {
             throw new Exception(ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
     }
 
+
+    public static void main(String[] args) {
+        int companyType = 2; //1-悉点 2-豪力士
+        int openType =  3; //1-IC卡 2-身份证（悉点不支持） 3-密码
+
+        CompanyBusEnum companyBusEnum = CompanyBusEnum.getEnumByCode(companyType);
+
+        OpenTypeEnum openTypeEnum = OpenTypeEnum.getEnumByCode(openType);
+
+        NetLock netLock = new NetLock();
+        netLock.setCompanyBusEnum(companyBusEnum);
+        netLock.setOpenTypeEnum(openTypeEnum);
+        netLock.setLockId("330");
+        // netLock.setLockOption("S-L2");
+        netLock.setLockData("444555");
+        //netLock.setDomain("http://gateway.seedien.com");//悉点接口地址
+        netLock.setDomain("http://121.201.67.205:8007"); //豪力士接口地址
+        netLock.setStartTime("2019-11-29 17:17:00");
+        netLock.setEndTime("2019-12-30 17:17:00");
+
+
+        UpdateLock updateLock = new UpdateLock();
+
+        updateLock.setOldLockData("444555");
+        updateLock.setLockData("555666");
+        updateLock.setCompanyBusEnum(companyBusEnum);
+        updateLock.setOpenTypeEnum(openTypeEnum);
+        updateLock.setLockId("D44132916");
+        updateLock.setLockOption("S-L2");
+
+        updateLock.setStartTime("2019-11-29 17:17:00");
+        updateLock.setEndTime("2019-12-30 17:17:00");
+
+
+        DelLock delLock = new DelLock();
+        delLock.setLockData("555666");
+        delLock.setCompanyBusEnum(companyBusEnum);
+        delLock.setOpenTypeEnum(openTypeEnum);
+        delLock.setLockId("D44132916");
+        delLock.setLockOption("S-L2");
+        String result = null;
+        try {
+            result = LockServer.add(netLock);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(result);
+
+    }
+
+
+
+
 }
