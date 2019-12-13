@@ -2,7 +2,7 @@ package com.rh.netlock.enums;
 
 public enum CompanyBusEnum {
 
-    XD_NETROCK(1, "悉点互联网门锁"),
+    XD_NETROCK(1, "悉点SL-02"),
     HLS_NETROCK(2,"豪力士互联网门锁"),
     XIEZ_FACEROCK(3,"携住人脸识别门锁"),
     YUNDING_NETROCK(4,"云丁互联网门锁"),

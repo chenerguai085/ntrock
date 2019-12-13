@@ -3,6 +3,7 @@ package com.rh.netlock.entity;
 import com.rh.netlock.enums.OpenTypeEnum;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author:chenj
@@ -24,12 +25,12 @@ public class NetLock extends LockBase implements Serializable {
     /**
      * 开始时间
      */
-    private String startTime;
+    private Date startTime;
 
     /**
      * 结束时间
      */
-    private String endTime;
+    private Date endTime;
 
     /**
      * 开门数据
@@ -63,24 +64,21 @@ public class NetLock extends LockBase implements Serializable {
         this.openTypeEnum = openTypeEnum;
     }
 
-
-
-    public String getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public String getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(String endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
-
 
     public String getLockId() {
         return lockId;

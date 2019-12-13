@@ -3,7 +3,6 @@ package com.rh.netlock.util;
 
 import com.rh.netlock.enums.ErrMsgEnum;
 import com.rh.netlock.enums.LockEnum;
-import org.apache.commons.httpclient.HttpStatus;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,6 +20,7 @@ import java.util.Map;
  */
 public class WebServiceUtil {
 
+    final static Integer successCode = 200;
     public static Map<String, Object> websReq(String xml, String domain) throws Exception {
         // 服务器地址
         StringBuffer sb = new StringBuffer();
@@ -29,7 +29,6 @@ public class WebServiceUtil {
         InputStream is = null;
 
         String urlPath = domain + LockEnum.HLS_URL_SUF.getMsg();
-
         try {
             URL url = new URL(urlPath);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -46,10 +45,7 @@ public class WebServiceUtil {
             OutputStream out = conn.getOutputStream();
             out.write(buf);
             out.close();
-            // 获取响应状态码
-            int code = conn.getResponseCode();
-
-            if (code == HttpStatus.SC_OK) {
+            if (conn.getResponseCode() == successCode) {
                 is = conn.getInputStream();
                 byte[] b = new byte[1024];
                 int len = 0;
@@ -59,7 +55,7 @@ public class WebServiceUtil {
                 }
                 is.close();
             } else {
-                throw new Exception(ErrMsgEnum.REMOTE_ERRMSG.getMsg() + "第三方返回http状态码" + code);
+                throw new Exception(ErrMsgEnum.REMOTE_ERRMSG.getMsg() + "第三方返回http状态码" + conn.getResponseCode());
             }
         } catch (Exception e) {
             e.printStackTrace();

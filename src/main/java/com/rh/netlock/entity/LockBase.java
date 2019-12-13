@@ -26,6 +26,17 @@ public class LockBase implements Serializable {
      */
     private  String token;
 
+    /**
+     * 门锁唯一标识
+     */
+    private  String lockId;
+
+    /**
+     * 扩展字段 目前  悉点-门锁的型号  携住-表示HotelId字段
+     */
+    private  String lockOption;
+
+
     public String getDomain() {
         return domain;
     }
@@ -48,5 +59,21 @@ public class LockBase implements Serializable {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getLockId() {
+        return lockId;
+    }
+
+    public void setLockId(String lockId) {
+        this.lockId = lockId;
+    }
+
+    public String getLockOption() {
+        return lockOption;
+    }
+
+    public void setLockOption(String lockOption) {
+        this.lockOption = lockOption;
     }
 }

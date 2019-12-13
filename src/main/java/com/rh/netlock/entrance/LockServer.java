@@ -61,32 +61,33 @@ public class LockServer {
      * @author:chenj
      * @date: 2019/11/29
      */
-    public static void delete(DelLock delLock) throws Exception {
+    public static String delete(DelLock delLock) throws Exception {
+        String result = "";
         if (null == delLock)
             throw new Exception(ErrMsgEnum.ERR_OBJECTISNULL.getMsg());
 
         if (null == delLock.getCompanyBusEnum())
             throw new Exception(ErrMsgEnum.EER_COMANY_NO.getMsg());
 
-
         CompanyBusEnum channel = delLock.getCompanyBusEnum();
 
         switch (channel) {
             case XD_NETROCK:
-                XidianLockImpl.delete(delLock);
-                break;
+                result = XidianLockImpl.delete(delLock);
+                return result;
             case HLS_NETROCK:
-                HlisLockImpl.delete(delLock);
-                break;
+                result = HlisLockImpl.delete(delLock);
+                return result;
             case XIEZ_FACEROCK:
-                return;
+                return null;
             case YUNDING_NETROCK:
-                YunDingLockImpl.delete(delLock);
-                break;
+                result = YunDingLockImpl.delete(delLock);
+                return result;
             default:
                 break;
         }
 
+        return result;
     }
 
     /**
@@ -134,25 +135,27 @@ public class LockServer {
      * @author:chenj
      * @date: 2019/11/29
      */
-    public static void clearAll(ClearLock clearLock) throws Exception {
-        if (null == clearLock)
+    public static String clearAll(LockBase lockBase) throws Exception {
+        if (null == lockBase)
             throw new RuntimeException(ErrMsgEnum.ERR_OBJECTISNULL.getMsg());
 
-        if (null == clearLock.getCompanyBusEnum())
+        if (null == lockBase.getCompanyBusEnum())
             throw new RuntimeException(ErrMsgEnum.EER_COMANY_NO.getMsg());
 
-        CompanyBusEnum channel = clearLock.getCompanyBusEnum();
+        CompanyBusEnum channel = lockBase.getCompanyBusEnum();
+        String result = "";
         switch (channel) {
             case XD_NETROCK:
                 break;
             case HLS_NETROCK:
-                HlisLockImpl.clearAll(clearLock);
-                break;
+                result = HlisLockImpl.clearAll(lockBase);
+                return result;
             case XIEZ_FACEROCK:
                 break;
             default:
                 break;
         }
+        return result;
     }
 
     /**
@@ -196,10 +199,11 @@ public class LockServer {
 
 
     /**
-     *remark: 远程开门
-     *@author:chenj
-     *@date: 2019/11/29
-     *@return void
+     * remark: 远程开门
+     *
+     * @return void
+     * @author:chenj
+     * @date: 2019/11/29
      */
 //    public  void remoteOpen(NetRock netRockIn) throws Exception {
 //        if (null == netRockIn)
@@ -216,6 +220,4 @@ public class LockServer {
 //
 //        managerHandle.remoteOpen(netRockIn.getCompanyBusEnum().getCode().toString(), netRockIn);
 //    }
-
-
 }

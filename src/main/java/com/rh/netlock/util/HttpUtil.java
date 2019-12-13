@@ -1,18 +1,26 @@
 package com.rh.netlock.util;
 
 import com.rh.netlock.enums.ErrMsgEnum;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.methods.PostMethod;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.Date;
-import java.util.Map;
-import java.util.Set;
+import java.nio.charset.Charset;
+import java.util.*;
 
 /**
  *remark:
@@ -21,148 +29,90 @@ import java.util.Set;
  *@return
  */
 public class HttpUtil {
-    /**
-     * post请求（用于请求json格式的参数）
-     * @param
-     * @param
-     * @return
-     */
-    public static String doJsonPost(String uplPath, String Json) {
-
-        String result = "";
-        BufferedReader reader = null;
-        try {
-            URL url = new URL(uplPath);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
-            conn.setDoOutput(true);
-            conn.setDoInput(true);
-            conn.setUseCaches(false);
-            conn.setRequestProperty("Connection", "Keep-Alive");
-            conn.setRequestProperty("Charset", "UTF-8");
-            // 设置文件类型:
-            conn.setRequestProperty("Content-Type","application/json; charset=UTF-8");
-            conn.setRequestProperty("code","hzrw-001");
-
-            // 往服务器里面发送数据
-            if (Json != null) {
-                byte[] writebytes = Json.getBytes();
-                // 设置文件长度
-                conn.setRequestProperty("Content-Length", String.valueOf(writebytes.length));
-                OutputStream outwritestream = conn.getOutputStream();
-                outwritestream.write(Json.getBytes());
-                outwritestream.flush();
-                outwritestream.close();
-            }
-
-            if (conn.getResponseCode() == 200) {
-                reader = new BufferedReader(
-                        new InputStreamReader(conn.getInputStream()));
-                result = reader.readLine();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw  new RuntimeException(ErrMsgEnum.REMOTE_ERRMSG.getMsg());
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-        return result;
-    }
-
 
 
     /**
-     *remark: 携住添加人脸
+     *remark:httpclient 发送post请求
      *@author:chenj
-     *@date: 2019/11/28
+     *@date: 2019/12/12
      *@return java.lang.String
      */
-    public static String postXzAddFace(String urlPath, String jsonMap, Date now,String domain,String tokenType,String accessToken) throws Exception {
-        String result = "";
-        BufferedReader reader = null;
+    public static String doJsonPost(String json,Map<String,String> headersMap,String url) throws Exception {
+        CloseableHttpClient client = HttpClientBuilder.create().build();
+        HttpPost post = new HttpPost(url);
+        String res = "";
         try {
-            URL url = new URL(urlPath);
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
-            conn.setDoOutput(true);
-            conn.setDoInput(true);
-            conn.setUseCaches(false);
-            conn.setRequestProperty("Connection", "Keep-Alive");
-            conn.setRequestProperty("Charset", "UTF-8");
-            // 设置文件类型:
-            conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-
-
-            conn.setRequestProperty("Authorization", tokenType + " " + accessToken);
-
-            // 往服务器里面发送数据
-            if (jsonMap != null) {
-                byte[] writebytes = jsonMap.getBytes();
-                // 设置文件长度
-                conn.setRequestProperty("Content-Length", String.valueOf(writebytes.length));
-                OutputStream outwritestream = conn.getOutputStream();
-                outwritestream.write(jsonMap.getBytes());
-                outwritestream.flush();
-                outwritestream.close();
-            }
-
-            if (conn.getResponseCode() == 200) {
-                reader = new BufferedReader(
-                        new InputStreamReader(conn.getInputStream()));
-                result = reader.readLine();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-
-            throw new Exception("请求人脸录入接口异常:" + e.getMessage() );
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+            Iterator<Map.Entry<String, String>> headersIt = null;
+            if (null != headersMap){
+                headersIt = headersMap.entrySet().iterator();
+                while (headersIt.hasNext()) {
+                    Map.Entry<String, String> entry = headersIt.next();
+                    post.addHeader(entry.getKey(), entry.getValue().toString());
                 }
             }
+
+            post.setEntity(new StringEntity(json,Charset.forName("UTF-8")));
+            CloseableHttpResponse response = client.execute(post);
+
+            HttpEntity entity = response.getEntity();
+            res = EntityUtils.toString(entity, Charset.forName("UTF-8"));
+            response.close();
+            client.close();
+        }  catch (Exception e) {
+            e.printStackTrace();
+
+            throw new Exception(ErrMsgEnum.ERR.getMsg() + ": " + e.getMessage());
         }
 
-        return result;
+        return res;
     }
-
 
 
     /**
-     * remark:获取token请求
-     *
-     * @return java.lang.String
-     * @author:chenj
-     * @date: 2019/11/23
+     *remark: key value 的形式发送json请i去
+     *@author:chenj
+     *@date: 2019/12/12
+     *@return void
      */
-    public static String postGetToken(String url, Map<String, Object> params) throws Exception {
-        PostMethod postMethod = null;
-        postMethod = new PostMethod(url);
+    public static String doParamsPost(Map<String,Object> paramsMap,Map<String,Object> headersMap,String url) throws Exception {
+        CloseableHttpClient client = HttpClientBuilder.create().build();
+        HttpPost post = new HttpPost(url);
+        String res = "";
+        try {
+            Iterator<Map.Entry<String, Object>> headersIt = null;
+            if (null != headersMap){
+                headersIt = headersMap.entrySet().iterator();
 
-        postMethod.setRequestHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+                while (headersIt.hasNext()) {
+                    Map.Entry<String, Object> entry = headersIt.next();
 
-        Set<String> keySet = params.keySet();
-        for (String key : keySet) {
-            String value = (String) params.get(key);
-            postMethod.addParameter(key, value);
+                    post.addHeader(entry.getKey(), entry.getValue().toString());
+                }
+            }
+
+            List<NameValuePair> params = new ArrayList<>();
+            Iterator<Map.Entry<String, Object>> paramsIt = null;
+            if (null != paramsMap){
+                paramsIt = paramsMap.entrySet().iterator();
+
+                while (paramsIt.hasNext()) {
+                    Map.Entry<String, Object> entry = paramsIt.next();
+
+                    params.add(new BasicNameValuePair(entry.getKey(), entry.getValue().toString()));
+                }
+            }
+
+            post.setEntity(new UrlEncodedFormEntity(params, Charset.forName("UTF-8")));
+            HttpResponse response = client.execute(post);
+            res = EntityUtils.toString(response.getEntity(),Charset.forName("UTF-8"));
+            System.out.println(res);
+        }  catch (IOException e) {
+            e.printStackTrace();
+            throw new Exception("请求异常");
         }
 
-        HttpClient httpClient = new HttpClient();
-
-        httpClient.executeMethod(postMethod);
-        String response = postMethod.getResponseBodyAsString();
-
-        return response;
+        return res;
     }
-
 
 
 
@@ -173,9 +123,10 @@ public class HttpUtil {
        *@return java.lang.String
        */
     public static String yundingPost(String urlPath,String json) throws Exception {
-
         String result = "";
         BufferedReader reader = null;
+
+        System.out.println(urlPath);
         try {
             URL url = new URL(urlPath);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -186,8 +137,8 @@ public class HttpUtil {
             conn.setRequestProperty("Connection", "Keep-Alive");
             conn.setRequestProperty("Charset", "UTF-8");
             // 设置文件类型:
-            conn.setRequestProperty("Content-Type","application/json; charset=UTF-8");
-
+            conn.setRequestProperty("Content-Type","application/json");
+            conn.setRequestProperty("User-Agent","ddingnet-3.0");
             // 往服务器里面发送数据
             if (json != null) {
                 byte[] writebytes = json.getBytes();
@@ -216,8 +167,83 @@ public class HttpUtil {
                 }
             }
         }
-        return result;
 
+        return result;
+    }
+
+
+    /**
+     *remark: httpClient 发送get请求
+     *@author:chenj
+     *@date: 2019/12/12
+     *@return java.lang.String
+     */
+    private static String httpClientGet(Map<String,Object> paramsMap,Map<String,Object> headersMap,String url) throws Exception {
+        String result = null;
+        //请求地址
+        //获取请求参数
+        List<NameValuePair> parame = new ArrayList<NameValuePair>();
+        Iterator<Map.Entry<String, Object>> paramsIt = null;
+        if (null != paramsMap){
+            paramsIt = paramsMap.entrySet().iterator();
+
+            while (paramsIt.hasNext()) {
+                Map.Entry<String, Object> entry = paramsIt.next();
+
+                parame.add(new BasicNameValuePair(entry.getKey(), entry.getValue().toString()));
+            }
+        }
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        CloseableHttpResponse response = null;
+        String parameStr = null;
+        try {
+            parameStr = EntityUtils.toString(new UrlEncodedFormEntity(parame));
+            //拼接参数
+            StringBuffer sb = new StringBuffer();
+            sb.append(url);
+            sb.append("?");
+            sb.append(parameStr);
+            //创建get请求
+            HttpGet httpGet = new HttpGet(sb.toString());
+            // 设置请求和传输超时时间
+//            RequestConfig requestConfig = RequestConfig.custom()
+//                    .setSocketTimeout(2000).setConnectTimeout(2000).build();
+//            httpGet.setConfig(requestConfig);
+            // 提交参数发送请求
+            response = httpclient.execute(httpGet);
+
+            // 得到响应信息
+            int statusCode = response.getStatusLine().getStatusCode();
+            if (statusCode != HttpStatus.SC_OK) {
+                httpGet.abort();
+                throw new RuntimeException("HttpClient,error status code :" + statusCode);
+            }
+            HttpEntity entity = response.getEntity();
+            if (entity != null) {
+                result = EntityUtils.toString(entity);
+            }
+            EntityUtils.consume(entity);
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            //关闭所有资源连接
+            if (response != null) {
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (httpclient != null) {
+                try {
+                    httpclient.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result.toString();
     }
 
 

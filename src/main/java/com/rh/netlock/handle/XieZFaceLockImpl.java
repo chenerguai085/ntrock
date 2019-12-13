@@ -7,9 +7,9 @@ import com.rh.netlock.entity.Token;
 import com.rh.netlock.entity.User;
 import com.rh.netlock.enums.ErrMsgEnum;
 import com.rh.netlock.enums.LockEnum;
+import com.rh.netlock.util.DateHelper;
 import com.rh.netlock.util.HttpUtil;
-import com.rhcj.commons.DateHelper;
-import com.rhcj.commons.JsonHelper;
+import com.rh.netlock.util.JsonHelper;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Date;
@@ -25,29 +25,29 @@ public class XieZFaceLockImpl {
 
     final static String tokenSpReg = ",";
 
-    public static  String add(NetLock netLock) throws Exception {
+    public static String add(NetLock netLock) throws Exception {
 
-        if(StringUtils.isBlank(netLock.getLockOption()) || StringUtils.isBlank(netLock.getLockId())
-            ||  StringUtils.isBlank(netLock.getFileStr()) ||
-           StringUtils.isBlank(netLock.getToken())){
-            throw  new Exception(ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
+        if (StringUtils.isBlank(netLock.getLockOption()) || StringUtils.isBlank(netLock.getLockId())
+                || StringUtils.isBlank(netLock.getFileStr()) ||
+                StringUtils.isBlank(netLock.getToken())) {
+            throw new Exception(ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
         }
 
-        if (StringUtils.isBlank(netLock.getDomain())){
+        if (StringUtils.isBlank(netLock.getDomain())) {
             netLock.setDomain(LockEnum.XIEZHU_DOMAIN.getMsg());
         }
-        //封装成json数据
-        String reqJson = buildAddFaceJson(netLock);
 
         String[] tokenArr = netLock.getToken().split(tokenSpReg);
 
-        if (1 == ucamRockAddFace(netLock.getDomain() + LockEnum.FACE_ADD_API.getMsg(), reqJson, new Date(), netLock.getDomain()
-            ,tokenArr[0] , tokenArr[1])) {
 
-            return netLock.getLockData();
-        }
+        return ucamRockAddFace(netLock.getDomain() + LockEnum.FACE_ADD_API.getMsg(), buildAddFaceJson(netLock)
+                , tokenArr[0], tokenArr[1]);
 
-        throw  new Exception(ErrMsgEnum.ERR.getMsg());
+//        if (1 == ucamRockAddFace(netLock.getDomain() + LockEnum.FACE_ADD_API.getMsg(), buildAddFaceJson(netLock)
+//                , tokenArr[0], tokenArr[1])) {
+//
+//            return netLock.getLockData();
+//        }
     }
 
 
@@ -60,7 +60,6 @@ public class XieZFaceLockImpl {
      */
     private static String buildAddFaceJson(NetLock netLock) {
         JSONObject jsonObject = new JSONObject();
-
         //设备信息
         jsonObject.put("PmsCode", LockEnum.PMS_CODE.getMsg());
         jsonObject.put("HotelId", netLock.getLockOption());
@@ -68,10 +67,9 @@ public class XieZFaceLockImpl {
         jsonObject.put("TimeStamp", new Date().getTime());
         //人员信息
         JSONObject infoJson = new JSONObject();
+
         infoJson.put("Name", netLock.getLockData());
         infoJson.put("Base64Img", netLock.getFileStr());
-//        infoJson.put("CardNo", netRock.getIdCardNo());
-//        infoJson.put("Mobile", netRock.getMobile());
 
         JSONArray jsonArray = new JSONArray();
         jsonArray.add(infoJson);
@@ -89,53 +87,78 @@ public class XieZFaceLockImpl {
      * @author:chenj
      * @date: 2019/11/21
      */
-    private static Integer ucamRockAddFace(String url, String jsonMap, Date now, String domain,
-                                           String tokenType,String accessToken) throws Exception {
+    private static String ucamRockAddFace(String url, String json, String tokenType, String accessToken) throws Exception {
         //发送请求
-        String respJson = HttpUtil.postXzAddFace(url, jsonMap, now, domain,tokenType,accessToken);
+        String respJsonStr = HttpUtil.doJsonPost(json, buildReqHeaders(tokenType, accessToken), url);
 
-        Map<String, Object> map = JsonHelper.toMap(respJson);
-        if (null != map && map.get("Result").toString().equals("true")) {
-
-            //成功
-            return 1;
+        if (!JsonHelper.isJson(respJsonStr)) {
+            throw new Exception(ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg());
         }
 
-        //失败
-        return 0;
+        JSONObject respJson = JSONObject.parseObject(respJsonStr);
+
+        if (!respJson.get("Result").toString().equals("true")) {
+            //失败
+            throw new Exception(ErrMsgEnum.ERR.getMsg() + ": " + respJson.get("Msg").toString());
+        }
+        //成功
+        return respJsonStr;
     }
 
+
+    /**
+     * remark: 携住请求头设置
+     *
+     * @return java.util.Map<java.lang.String, java.lang.String>
+     * @author:chenj
+     * @date: 2019/12/12
+     */
+    private static Map<String, String> buildReqHeaders(String tokenType, String accessToken) {
+        Map<String, String> heardsMap = new HashMap<>();
+        // 设置文件类型:
+        heardsMap.put("Content-Type", "application/json; charset=UTF-8");
+        heardsMap.put("Charset", "UTF-8");
+        heardsMap.put("Authorization", tokenType + " " + accessToken);
+
+        return heardsMap;
+    }
+
+    /**
+     * remark: 获取token
+     *
+     * @return com.rh.netlock.entity.Token
+     * @author:chenj
+     * @date: 2019/12/12
+     */
     public static Token getToken(User user) throws Exception {
         Map<String, Object> getTokenMap = new HashMap<>();
 
-
-        if(StringUtils.isBlank(user.getUserName()) || StringUtils.isBlank(user.getPassword()))
+        if (StringUtils.isBlank(user.getUserName()) || StringUtils.isBlank(user.getPassword()))
             throw new Exception(ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
         getTokenMap.put("grant_type", "password");
         getTokenMap.put("username", user.getUserName());
         getTokenMap.put("password", user.getPassword());
 
-
-        if (StringUtils.isBlank(user.getDomain())){
+        if (StringUtils.isBlank(user.getDomain())) {
             user.setDomain(LockEnum.XIEZHU_DOMAIN.getMsg());
         }
 
-        String result = HttpUtil.postGetToken(user.getDomain() + LockEnum.GET_TOKEN_API.getMsg(), getTokenMap);
+        String respJsonStr = HttpUtil.doParamsPost(getTokenMap, null, user.getDomain() + LockEnum.GET_TOKEN_API.getMsg());
 
-        if (!JsonHelper.isJson(result)) {
-            throw new Exception("获取tokne信息异常,返回token信息非json格式字符串");
+        if (!JsonHelper.isJson(respJsonStr)) {
+            throw new Exception(ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg());
         }
 
-        Map jsonMap = JsonHelper.toMap(result);
-        String access_token = jsonMap.get("access_token").toString();
-        String token_type = jsonMap.get("token_type").toString();
+        JSONObject respJson = JSONObject.parseObject(respJsonStr);
+        String access_token = respJson.get("access_token").toString();
+        String token_type = respJson.get("token_type").toString();
 
-        String expiresDateStr = jsonMap.get(".expires").toString();
+        String expiresDateStr = respJson.get(".expires").toString();
 
         Date expiresDate = DateHelper.gmtToDate(expiresDateStr);
-        if (null == expiresDate){
+        if (null == expiresDate) {
 
-            throw new Exception("获取tokne信息异常,返回日期格式非约定格式");
+            throw new Exception(ErrMsgEnum.ERR_MSG_DATE_FORMAT.getMsg());
         }
 
         Token token = new Token();

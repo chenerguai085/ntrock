@@ -24,7 +24,6 @@ public class ParseUtil {
      * @date: 2019/11/26
      */
     public static String buildXml(String action, Map<String, Object> map) {
-
         StringBuilder sb = new StringBuilder();
 
         sb.append("<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"><soap:Body>\n" +
@@ -75,7 +74,7 @@ public class ParseUtil {
 
         map.put("resultID", resultId.getTextTrim());
         map.put("description", description.getTextTrim());
-
+        map.put("resultXml",soapXml);
         return map;
     }
 }

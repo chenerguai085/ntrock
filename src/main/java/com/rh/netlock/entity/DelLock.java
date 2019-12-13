@@ -9,13 +9,10 @@ import java.io.Serializable;
  * @remark:
  * @date: 2019/12/5
  */
-public class DelLock extends ClearLock implements Serializable {
-
+public class DelLock extends LockBase implements Serializable {
     /**
-     * 扩展字段 目前  悉点-门锁的型号  携住-表示HotelId字段
+     * 开门数据
      */
-    private String lockOption;
-
     private String lockData;
 
     /**
@@ -39,11 +36,4 @@ public class DelLock extends ClearLock implements Serializable {
         this.lockData = lockData;
     }
 
-    public String getLockOption() {
-        return lockOption;
-    }
-
-    public void setLockOption(String lockOption) {
-        this.lockOption = lockOption;
-    }
 }

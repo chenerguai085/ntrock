@@ -4,33 +4,30 @@ import com.alibaba.fastjson.JSONObject;
 import com.rh.netlock.entity.*;
 import com.rh.netlock.enums.ErrMsgEnum;
 import com.rh.netlock.enums.LockEnum;
-import com.rh.netlock.util.HttpUtil;
-import com.rh.netlock.util.RockCommonUtil;
-import com.rhcj.commons.DateHelper;
-import com.rhcj.commons.JsonHelper;
+import com.rh.netlock.util.*;
 import org.apache.commons.lang3.StringUtils;
-
 import java.util.Date;
-import java.util.Map;
 
 /**
  * @author:chenj
  * @remark:
  * @date: 2019/12/4
  */
-public  class YunDingLockImpl {
+public class YunDingLockImpl {
 
+    static final int thousand = 1000;
 
     /**
-     *remark: 获取token信息
-     *@author:chenj
-     *@date: 2019/12/4
-     *@return com.rh.netrock.entity.Token
+     * remark: 获取token信息
+     *
+     * @return com.rh.netrock.entity.Token
+     * @author:chenj
+     * @date: 2019/12/4
      */
     public static Token getToken(User user) throws Exception {
-        RockCommonUtil.paramsVerify(user,"userName","password");
+        ParamsVerifyUtil.paramsVerify(user, "userName", "password");
 
-        if(StringUtils.isBlank(user.getDomain())){
+        if (StringUtils.isBlank(user.getDomain())) {
 
             user.setDomain(LockEnum.YUNDING_DOMAIN.getMsg());
         }
@@ -41,170 +38,171 @@ public  class YunDingLockImpl {
 
         String result = HttpUtil.yundingPost(user.getDomain() + LockEnum.YUND_TOKEN_API.getMsg(), jsonObject.toString());
 
-        Map jsonMap = JsonHelper.toMap(result);
-
-        Token token = null;
-
-        if(null == jsonMap){
-
+        if (!JsonHelper.isJson(result)) {
             throw new Exception(ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg());
         }
 
-        if(null != jsonMap && jsonMap.get("ErrNo").equals("0")){
+        JSONObject respJson = JSONObject.parseObject(result);
 
+        Token token = null;
+
+        if (respJson.get("ErrNo").toString().equals("0")) {
             token = new Token();
-
-            token.setAccessToken(jsonMap.get("access_token").toString());
-
-            Date expiresDate = DateHelper.secondToDate(Long.valueOf(jsonMap.get("expires_time").toString()));
+            token.setAccessToken(respJson.get("access_token").toString());
+            Date expiresDate = DateHelper.secondToDate(Long.valueOf(respJson.get("expires_time").toString()));
 
             token.setExpiresDate(expiresDate);
-        }else if(null != jsonMap && !jsonMap.get("ErrNo").equals("0")){
+        } else if (null != respJson && !respJson.get("ErrNo").toString().equals("0")) {
 
-            throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + jsonMap.get("ErrMsg").toString());
+            throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + respJson.get("ErrMsg").toString());
         }
 
         return token;
     }
 
-
     /**
-     *remark: 添加密码
-     *@author:chenj
-     *@date: 2019/12/4
-     *@return java.lang.String
+     * remark: 添加密码
+     *
+     * @return java.lang.String
+     * @author:chenj
+     * @date: 2019/12/4
      */
-
     public static String add(NetLock netLock) throws Exception {
         JSONObject jsonObject = new JSONObject();
-
         if (!netLock.getLockData().contains(","))
             throw new Exception("未传入正确格式开门数据");
+
+        if (StringUtils.isBlank(netLock.getDomain())) {
+            netLock.setDomain(LockEnum.YUNDING_DOMAIN.getMsg());
+        }
 
         //与前端调用返回个约定  lockData 字段 是密码+ "," + 手机号拼接而成
         String[] dataArr = netLock.getLockData().split(",");
 
         jsonObject.put("access_token", netLock.getToken());
         jsonObject.put("home_id", netLock.getLockOption());
-        jsonObject.put("room_id", netLock.getLockId());
+        jsonObject.put("uuid", netLock.getLockId());
         jsonObject.put("phonenumber", dataArr[1]);
-        jsonObject.put("is_default",0);
+        jsonObject.put("is_default", 0);
         jsonObject.put("password", dataArr[0]);
-        jsonObject.put("name","在线密码" + dataArr[0]);
-        jsonObject.put("permission_begin",DateHelper.parseSecond(netLock.getStartTime()));
-        jsonObject.put("permission_end",DateHelper.parseSecond(netLock.getEndTime()));
+        jsonObject.put("name", "在线密码" + dataArr[0]);
+        jsonObject.put("permission_begin", netLock.getStartTime().getTime() / thousand);
+        jsonObject.put("permission_end", netLock.getEndTime().getTime() / thousand);
+
         String result = HttpUtil.yundingPost(netLock.getDomain() + LockEnum.YUND_ADD_PASSWORD.getMsg(), jsonObject.toString());
 
-        Map jsonMap = JsonHelper.toMap(result);
-
-        if(null == jsonMap){
-
+        if (!JsonHelper.isJson(result)) {
             throw new Exception(ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg());
         }
 
-        if(null != jsonMap && jsonMap.get("ErrNo").equals("0")){
+        JSONObject respJson = JSONObject.parseObject(result);
 
-            result = jsonMap.get("id").toString();
+        if (respJson.get("ErrNo").toString().equals("0")) {
 
+            String id = respJson.get("id").toString();
+            String serviceid = respJson.get("serviceid").toString();
+
+
+            System.out.println("id ,serviceid " + id + "," + serviceid);
             return result;
-        }else if(null != jsonMap && !jsonMap.get("ErrNo").equals("0")){
+        } else {
 
-            throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + jsonMap.get("ErrMsg").toString());
+            throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + respJson.get("ErrMsg").toString());
         }
 
-        return "";
     }
 
-
     /**
-     *remark:
-     *@author:chenj
-     *@date: 2019/12/4
-     *@return java.lang.String
+     * remark:
+     *
+     * @return java.lang.String
+     * @author:chenj
+     * @date: 2019/12/4
      */
     public static String update(UpdateLock updateLock) throws Exception {
+        ParamsVerifyUtil.paramsVerify(updateLock, "oldLockData", "lockId", "lockOption", "lockData");
+
         JSONObject jsonObject = new JSONObject();
 
         if (!updateLock.getLockData().contains(","))
             throw new Exception("未传入正确格式开门数据");
 
+        if (StringUtils.isBlank(updateLock.getDomain())) {
+
+            updateLock.setDomain(LockEnum.YUNDING_DOMAIN.getMsg());
+        }
         //与前端调用返回个约定  lockData 字段 是密码+ "," + 手机号拼接而成
         String[] dataArr = updateLock.getLockData().split(",");
 
         jsonObject.put("access_token", updateLock.getToken());
         jsonObject.put("home_id", updateLock.getLockOption());
-        jsonObject.put("room_id", updateLock.getLockId());
+        jsonObject.put("uuid", updateLock.getLockId());
         jsonObject.put("phonenumber", dataArr[1]);
-        jsonObject.put("password_id", updateLock.getLockData());
+        jsonObject.put("password_id", updateLock.getOldLockData());
         jsonObject.put("password", dataArr[0]);
-        jsonObject.put("permission_begin",DateHelper.parseSecond(updateLock.getStartTime()));
-        jsonObject.put("permission_end",DateHelper.parseSecond(updateLock.getEndTime()));
-        String result = HttpUtil.yundingPost(updateLock.getDomain() + LockEnum.YUND_ADD_PASSWORD.getMsg(), jsonObject.toString());
+        jsonObject.put("permission_begin", updateLock.getStartTime().getTime() / thousand);
+        jsonObject.put("permission_end", updateLock.getEndTime().getTime() / thousand);
 
-        Map jsonMap = JsonHelper.toMap(result);
 
-        if(null == jsonMap){
+        String result = HttpUtil.yundingPost(updateLock.getDomain() + LockEnum.YUND_UPDATE_PASSWORD.getMsg(), jsonObject.toString());
 
+        if (!JsonHelper.isJson(result)) {
             throw new Exception(ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg());
         }
 
-        if(null != jsonMap && jsonMap.get("ErrNo").equals("0")){
+        JSONObject respJson = JSONObject.parseObject(result);
+
+        if (respJson.get("ErrNo").toString().equals("0")) {
+
+            String serviceid = respJson.get("serviceid").toString();
 
 
-            return updateLock.getLockData();
-        }else if(null != jsonMap && !jsonMap.get("ErrNo").equals("0")){
+            System.out.println("serviceid " + serviceid);
 
-            throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + jsonMap.get("ErrMsg").toString());
+            return result;
+        } else {
+
+            throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + respJson.get("ErrMsg").toString());
         }
-
-        return "";
     }
 
-
-
     /**
-     *remark: 删除
-     *@author:chenj
-     *@date: 2019/12/4
-     *@return java.lang.String
+     * remark: 删除
+     *
+     * @return java.lang.String
+     * @author:chenj
+     * @date: 2019/12/4
      */
-    public static void delete(DelLock delLock) throws Exception {
+    public static String delete(DelLock delLock) throws Exception {
+        ParamsVerifyUtil.paramsVerify(delLock, "lockId", "lockOption", "lockData", "token");
+
+        if (StringUtils.isBlank(delLock.getDomain())) {
+
+            delLock.setDomain(LockEnum.YUNDING_DOMAIN.getMsg());
+        }
+
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("access_token", delLock.getToken());
         jsonObject.put("home_id", delLock.getLockOption());
-        jsonObject.put("room_id", delLock.getLockId());
+        jsonObject.put("uuid", delLock.getLockId());
         jsonObject.put("password_id", delLock.getLockData());
 
         String result = HttpUtil.yundingPost(delLock.getDomain() + LockEnum.YUND_DELETE_PASSWORD.getMsg(), jsonObject.toString());
 
-        Map jsonMap = JsonHelper.toMap(result);
 
-        if(null == jsonMap){
-
+        if (!JsonHelper.isJson(result)) {
             throw new Exception(ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg());
         }
 
-        if(null != jsonMap && jsonMap.get("ErrNo").equals("0")){
+        JSONObject respJson = JSONObject.parseObject(result);
 
+        if (respJson.get("ErrNo").toString().equals("0")) {
 
-        }else if(null != jsonMap && !jsonMap.get("ErrNo").equals("0")){
+            return result;
+        } else {
 
-            throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + jsonMap.get("ErrMsg").toString());
+            throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + respJson.get("ErrMsg").toString());
         }
 
     }
-
-
-
-
-
-
-
-
-    public static void main(String[] args) throws Exception {
-
-
-    }
-
-
 }
