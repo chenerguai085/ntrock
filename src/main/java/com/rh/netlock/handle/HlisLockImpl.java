@@ -3,11 +3,15 @@ package com.rh.netlock.handle;
 import com.rh.netlock.entity.DelLock;
 import com.rh.netlock.entity.LockBase;
 import com.rh.netlock.entity.NetLock;
+import com.rh.netlock.entity.UpdateLock;
+import com.rh.netlock.entrance.LockServer;
 import com.rh.netlock.enums.*;
 import com.rh.netlock.util.DateHelper;
 import com.rh.netlock.util.ParseUtil;
 import com.rh.netlock.util.WebServiceUtil;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,8 +42,8 @@ public class HlisLockImpl {
         map.put("RoomId", netLock.getLockId());
         map.put("CardType", netLock.getOpenTypeEnum().getCode().toString());
         map.put("CardData", netLock.getLockData());
-        map.put("BeginTime", DateHelper.formatDate(netLock.getStartTime(),datePattern));
-        map.put("EndTime", DateHelper.formatDate(netLock.getEndTime(),datePattern));
+        map.put("BeginTime", DateHelper.formatDate(netLock.getStartTime(), datePattern));
+        map.put("EndTime", DateHelper.formatDate(netLock.getEndTime(), datePattern));
 
         String xml = ParseUtil.buildXml(LockEnum.HLS_Add_OpenUser_REQ.getMsg(), map);
 
@@ -51,6 +55,72 @@ public class HlisLockImpl {
         return resultMap.get("resultXml").toString();
     }
 
+    /**
+     * remark:添加开门用户
+     *
+     * @return java.lang.String
+     * @author:chenj
+     * @date: 2019/11/29
+     */
+    public static String update(UpdateLock updateLock) throws Exception {
+        if (StringUtils.isBlank(updateLock.getLockId()) || null == updateLock.getOpenTypeEnum() ||
+                null == updateLock.getEndTime())
+            throw new Exception(ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
+
+        if (StringUtils.isBlank(updateLock.getDomain())) {
+            updateLock.setDomain(LockEnum.HLS_DOMAIN.getMsg());
+        }
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("RoomId", updateLock.getLockId());
+        map.put("CardType", updateLock.getOpenTypeEnum().getCode().toString());
+
+        map.put("BeginTime", DateHelper.formatDate(new Date(), datePattern));
+        map.put("EndTime", DateHelper.formatDate(updateLock.getEndTime(), datePattern));
+
+        String xml = null;
+        Map<String, Object> resultMap = null;
+
+        if (null != updateLock.getOldLockData() && null == updateLock.getLockData()) {
+            map.put("CardData", updateLock.getOldLockData());
+            //表示修改过期时间  先删除后新增
+            xml = ParseUtil.buildXml(LockEnum.HLS_Delete_Openuser_REQ.getMsg(), map);
+            resultMap = WebServiceUtil.websReq(xml, updateLock.getDomain());
+            if (resultId.equals(resultMap.get("resultID").toString())) {
+                //删除成功  再新增
+                xml = ParseUtil.buildXml(LockEnum.HLS_Add_OpenUser_REQ.getMsg(), map);
+                resultMap = WebServiceUtil.websReq(xml, updateLock.getDomain());
+            }
+            if (!resultId.equals(resultMap.get("resultID").toString()))
+                throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + resultMap.get("description").toString());
+
+            return resultMap.get("resultXml").toString();
+        } else if (null != updateLock.getOldLockData() && null != updateLock.getLockData()) {
+
+            if (!updateLock.getOldLockData().equals(updateLock.getLockData())){
+                throw new Exception(ErrMsgEnum.ERR_API_UNSUPPORT.getMsg());
+            }
+
+            map.put("CardData", updateLock.getLockData());
+
+            //豪力士门锁时没有 更新的接口  所以不管前端只想更新过期时间 还是更新密码都智能先删除后新增
+            xml = ParseUtil.buildXml(LockEnum.HLS_Delete_Openuser_REQ.getMsg(), map);
+            resultMap = WebServiceUtil.websReq(xml, updateLock.getDomain());
+            if (resultId.equals(resultMap.get("resultID").toString())) {
+                //删除成功  再新增
+                xml = ParseUtil.buildXml(LockEnum.HLS_Add_OpenUser_REQ.getMsg(), map);
+                resultMap = WebServiceUtil.websReq(xml, updateLock.getDomain());
+            }
+            if (!resultId.equals(resultMap.get("resultID").toString()))
+                throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + resultMap.get("description").toString());
+
+            return resultMap.get("resultXml").toString();
+        }
+
+
+        return null;
+    }
+
 
     /**
      * remark: 删除开门用户
@@ -60,7 +130,7 @@ public class HlisLockImpl {
      * @date: 2019/11/29
      */
     public static String delete(DelLock delLock) throws Exception {
-        if (StringUtils.isBlank(delLock.getLockId()) || StringUtils.isBlank(delLock.getLockData()) || null == delLock.getOpenTypeEnum() ) {
+        if (StringUtils.isBlank(delLock.getLockId()) || StringUtils.isBlank(delLock.getLockData()) || null == delLock.getOpenTypeEnum()) {
             throw new Exception(ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
         }
 
@@ -107,7 +177,7 @@ public class HlisLockImpl {
         Map<String, Object> resultMap = WebServiceUtil.websReq(xml, lockBase.getDomain());
 
         if (!resultId.equals(resultMap.get("resultID").toString()))
-            throw new Exception(ErrMsgEnum.ERR + ":" + resultMap.get("description").toString());
+            throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + resultMap.get("description").toString());
 
         return resultMap.get("resultXml").toString();
     }
@@ -151,5 +221,4 @@ public class HlisLockImpl {
                 null == netLock.getEndTime())
             throw new Exception(ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
     }
-
 }

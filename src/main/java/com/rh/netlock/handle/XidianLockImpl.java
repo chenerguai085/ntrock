@@ -11,6 +11,8 @@ import com.rh.netlock.util.DateHelper;
 import com.rh.netlock.util.HttpUtil;
 import com.rh.netlock.util.JsonHelper;
 import org.apache.commons.lang3.StringUtils;
+
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -114,7 +116,9 @@ public class XidianLockImpl {
      */
     public static String update(UpdateLock updateLock) throws Exception {
         //校验参数
-        paramsVersign(updateLock);
+        if (StringUtils.isBlank(updateLock.getLockId()) || StringUtils.isBlank(updateLock.getLockOption())
+                || StringUtils.isBlank(updateLock.getOldLockData()) || null == updateLock.getEndTime() || null == updateLock.getOpenTypeEnum())
+            throw new Exception(ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
 
         if (StringUtils.isBlank(updateLock.getDomain())) {
             updateLock.setDomain(LockEnum.XIDIAN_DOMAIN.getMsg());
@@ -125,30 +129,110 @@ public class XidianLockImpl {
         //公共字段
         jsonObject.put("deviceSerial", updateLock.getLockId());
         jsonObject.put("productModel", updateLock.getLockOption());
-        jsonObject.put("startTime", DateHelper.formatDate(updateLock.getStartTime(), datePattern));
+        jsonObject.put("startTime", DateHelper.formatDate(new Date(), datePattern));
         jsonObject.put("endTime", DateHelper.formatDate(updateLock.getEndTime(), datePattern));
 
+        boolean flag = false;
+        if (null != updateLock.getOldLockData() && null == updateLock.getLockData()) {
+            //表示只修改过期时间  先删除后新增
+            flag = true;
+        } else if (null != updateLock.getOldLockData() && null != updateLock.getLockData()) {
+            if(updateLock.getOldLockData().equals(updateLock.getLockData())){
+                //前端如果传来新旧密码相等   因为悉点不支持只修改时间  所以调接口时还是要先新增后删除
+                flag = true;
+            }else{
+                //修改密码 时间也可能被修改
+                flag = false;
+            }
+
+        }
         String result = "";
+
         OpenTypeEnum openTypeEnum = updateLock.getOpenTypeEnum();
         switch (openTypeEnum) {
             case ICCARD:
                 jsonObject.put("cardNo", updateLock.getLockData());
-
-                result = commonReply(jsonObject.toString(), buildReqHeaders(), updateLock.getDomain() + LockEnum.UPDATE_CARD_API.getMsg());
+                String [] urlCardArr = {updateLock.getDomain() + LockEnum.DELETE_CARD_API.getMsg(),updateLock.getDomain() + LockEnum.ADD_CARD_API.getMsg(),updateLock.getDomain() + LockEnum.UPDATE_CARD_API.getMsg()};
+                result = updateReply(jsonObject.toString(), buildReqHeaders(), urlCardArr,flag);
                 return result;
             case PASSWORD:
                 if (StringUtils.isBlank(updateLock.getOldLockData())) {
                     throw new Exception(ErrMsgEnum.ERR_MSG_OLDPWD_ISNULL.getMsg());
                 }
-                jsonObject.put("newPwd", updateLock.getLockData());
-                jsonObject.put("oldPwd", updateLock.getOldLockData());
+                String [] urlPwdArr = {updateLock.getDomain() + LockEnum.DELETE_PWD_API.getMsg(),updateLock.getDomain() + LockEnum.ADD_PWD_API.getMsg(),updateLock.getDomain() + LockEnum.UPDATE_PWD_API.getMsg()};
 
-                result = commonReply(jsonObject.toString(), buildReqHeaders(), updateLock.getDomain() + LockEnum.UPDATE_PWD_API.getMsg());
+                if(flag){
+                    //只修改时间
+                    jsonObject.put("pwd", updateLock.getOldLockData());
+                }else{
+                    //密码,时间可能都会修改
+                    jsonObject.put("newPwd", updateLock.getLockData());
+                    jsonObject.put("oldPwd", updateLock.getOldLockData());
+                }
+
+                result = updateReply(jsonObject.toString(), buildReqHeaders(), urlPwdArr,flag);
                 return result;
             default:
                 break;
         }
         return result;
+    }
+
+    /**
+     *remark: 更新返回结果
+     *@author:chenj
+     *@date: 2019/12/16
+     *@return java.lang.String
+     */
+    private static String updateReply(String json, Map<String, String> headersMap, String[] urlArr, boolean flag) throws Exception {
+        String result = "";
+        if(flag){
+            //只更新最后过期时间  先删除后添加
+            result = HttpUtil.doJsonPost(json, headersMap, urlArr[0]);
+            if (!JsonHelper.isJson(result)) {
+
+                throw new Exception("请求删除接口时: " + ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg());
+            }
+
+            JSONObject delResultJson = JSONObject.parseObject(result);
+
+            if (delResultJson.getString("code").equals(successCode)) {
+                //删除成功  调用新增接口
+                result = HttpUtil.doJsonPost(json, headersMap, urlArr[1]);
+                if (!JsonHelper.isJson(result)) {
+
+                    throw new Exception(ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg());
+                }
+
+                JSONObject addResultJson = JSONObject.parseObject(result);
+
+                if (!addResultJson.getString("code").equals(successCode)) {
+
+                    throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + addResultJson.get("message"));
+                }
+
+                return result;
+            }else {
+                throw new Exception("请求删除接口返回不成功");
+            }
+
+        }else{
+            //密码时间可能都会更新
+            result = HttpUtil.doJsonPost(json, headersMap, urlArr[2]);
+            if (!JsonHelper.isJson(result)) {
+
+                throw new Exception(ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg());
+            }
+
+            JSONObject addResultJson = JSONObject.parseObject(result);
+
+            if (!addResultJson.getString("code").equals(successCode)) {
+
+                throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + addResultJson.get("message"));
+            }
+
+            return result;
+        }
     }
 
     /**

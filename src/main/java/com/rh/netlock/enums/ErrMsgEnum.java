@@ -13,7 +13,7 @@ public enum ErrMsgEnum {
     REMOTE_RESP_ERRDATE("接口返回过期时间格式有误转换异常"),
     ERR("请求失败"),
     EER_COMANY_NO("未传入门锁厂商或门锁类型"),
-    ERR_API_UNSUPPORT("该厂商互联网门锁不支持此API"),
+    ERR_API_UNSUPPORT("该厂商互联网门锁类型不支持此API"),
     ERR_OPENTRPE("未传入开门类型"),
     ERR_OBJECTISNULL("对象值为空"),
     ERR_PARAMS_NULL("非空参数不能为空"),

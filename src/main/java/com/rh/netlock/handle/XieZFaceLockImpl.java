@@ -42,12 +42,6 @@ public class XieZFaceLockImpl {
 
         return ucamRockAddFace(netLock.getDomain() + LockEnum.FACE_ADD_API.getMsg(), buildAddFaceJson(netLock)
                 , tokenArr[0], tokenArr[1]);
-
-//        if (1 == ucamRockAddFace(netLock.getDomain() + LockEnum.FACE_ADD_API.getMsg(), buildAddFaceJson(netLock)
-//                , tokenArr[0], tokenArr[1])) {
-//
-//            return netLock.getLockData();
-//        }
     }
 
 

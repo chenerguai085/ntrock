@@ -2,33 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9471fc3-c63a-4ba7-86b0-67e0ceb5fbcd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/DateHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/JsonHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/ParamsVerifyUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/ClearLock.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/DelLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/DelLock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/LockBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/LockBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/NetLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/NetLock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entrance/LockServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entrance/LockServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/CompanyBusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/CompanyBusEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/ErrMsgEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/ErrMsgEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/LockEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/LockEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HlisLockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HlisLockImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XieZFaceLockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XieZFaceLockImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/YunDingLockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/YunDingLockImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/HttpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/HttpUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/ParseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/ParseUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/RockCommonUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/WebServiceUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/WebServiceUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/rh/netlock/AppTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -221,7 +200,8 @@
       <workItem from="1575949205451" duration="2922000" />
       <workItem from="1576025533938" duration="645000" />
       <workItem from="1576130215259" duration="20714000" />
-      <workItem from="1576198883239" duration="10897000" />
+      <workItem from="1576198883239" duration="14301000" />
+      <workItem from="1576457822714" duration="9438000" />
     </task>
     <task id="LOCAL-00001" summary="新增携住人脸识别">
       <created>1575354876939</created>
@@ -272,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575546077463</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="修改">
+      <created>1576213841630</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1576213841630</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,12 +290,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
-          <line>35</line>
+          <line>37</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/entrance/LockServer.java</url>
-          <line>138</line>
+          <line>139</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -325,6 +312,21 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/YunDingLockImpl.java</url>
           <line>29</line>
           <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HlisLockImpl.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
+          <line>118</line>
+          <option name="timeStamp" value="52" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
+          <line>187</line>
+          <option name="timeStamp" value="53" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

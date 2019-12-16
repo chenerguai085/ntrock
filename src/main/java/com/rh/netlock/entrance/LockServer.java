@@ -112,8 +112,9 @@ public class LockServer {
 
                 return result;
             case HLS_NETROCK:
+                result = HlisLockImpl.update(updateLock);
 
-                return "";
+                return result;
             case XIEZ_FACEROCK:
                 return "";
             case YUNDING_NETROCK:
