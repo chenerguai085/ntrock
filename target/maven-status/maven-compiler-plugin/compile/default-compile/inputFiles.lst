@@ -8,6 +8,7 @@ D:\workspace\ntrock\src\main\java\com\rh\netlock\enums\ErrMsgEnum.java
 D:\workspace\ntrock\src\main\java\com\rh\netlock\entity\LockBase.java
 D:\workspace\ntrock\src\main\java\com\rh\netlock\App.java
 D:\workspace\ntrock\src\main\java\com\rh\netlock\entity\DelLock.java
+D:\workspace\ntrock\src\main\java\com\rh\netlock\handle\HongRFaceLockImpl.java
 D:\workspace\ntrock\src\main\java\com\rh\netlock\entity\NetLock.java
 D:\workspace\ntrock\src\main\java\com\rh\netlock\handle\XieZFaceLockImpl.java
 D:\workspace\ntrock\src\main\java\com\rh\netlock\entity\UpdateLock.java

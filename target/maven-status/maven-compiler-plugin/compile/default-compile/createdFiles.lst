@@ -1,6 +1,7 @@
 com\rh\netlock\handle\YunDingLockImpl.class
 com\rh\netlock\util\ParseUtil.class
 com\rh\netlock\enums\LockEnum.class
+com\rh\netlock\handle\HongRFaceLockImpl.class
 com\rh\netlock\util\DateHelper.class
 com\rh\netlock\App.class
 com\rh\netlock\entity\Token.class

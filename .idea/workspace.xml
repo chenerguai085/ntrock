@@ -2,12 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9471fc3-c63a-4ba7-86b0-67e0ceb5fbcd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HongRFaceLockImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entrance/LockServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entrance/LockServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/ErrMsgEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/ErrMsgEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/NetLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/NetLock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/LockEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/LockEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HlisLockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HlisLockImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XieZFaceLockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XieZFaceLockImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/HttpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/HttpUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/ParseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/ParseUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,9 +71,9 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="D:/test/workspace/lemuji.auths" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.general" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -120,6 +127,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="HongRFaceLockImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rh.netlock.handle.HongRFaceLockImpl" />
+      <module name="netlock" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rh.netlock.handle.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HttpUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rh.netlock.util.HttpUtil" />
+      <module name="netlock" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.rh.netlock.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="LockServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.rh.netlock.entrance.LockServer" />
       <module name="netlock" />
@@ -133,41 +166,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WebServiceUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rh.netlock.util.WebServiceUtil" />
-      <module name="netlock" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.rh.netlock.util.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="YunDingLockImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rh.netlock.handle.YunDingLockImpl" />
-      <module name="netlock" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.rh.netlock.handle.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.HlisLockImpl" />
+        <item itemvalue="Application.HongRFaceLockImpl" />
+        <item itemvalue="Application.HttpUtil" />
         <item itemvalue="Application.DateHelper" />
         <item itemvalue="Application.LockServer" />
-        <item itemvalue="Application.YunDingLockImpl" />
-        <item itemvalue="Application.WebServiceUtil" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",SHOW_FIELDS,SHOW_PROPERTIES" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -201,7 +211,7 @@
       <workItem from="1576025533938" duration="645000" />
       <workItem from="1576130215259" duration="20714000" />
       <workItem from="1576198883239" duration="14301000" />
-      <workItem from="1576457822714" duration="9438000" />
+      <workItem from="1576457822714" duration="54761000" />
     </task>
     <task id="LOCAL-00001" summary="新增携住人脸识别">
       <created>1575354876939</created>
@@ -259,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576213841630</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="修改">
+      <created>1576467478647</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1576467478647</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -314,19 +331,69 @@
           <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HlisLockImpl.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="51" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/util/HttpUtil.java</url>
+          <line>327</line>
+          <option name="timeStamp" value="56" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HongRFaceLockImpl.java</url>
+          <line>158</line>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HongRFaceLockImpl.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="58" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/util/HttpUtil.java</url>
+          <line>44</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/util/HttpUtil.java</url>
+          <line>73</line>
+          <option name="timeStamp" value="61" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HongRFaceLockImpl.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="63" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HongRFaceLockImpl.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
-          <line>118</line>
-          <option name="timeStamp" value="52" />
+          <line>311</line>
+          <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
-          <line>187</line>
-          <option name="timeStamp" value="53" />
+          <line>129</line>
+          <option name="timeStamp" value="66" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
+          <line>252</line>
+          <option name="timeStamp" value="67" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
+          <line>253</line>
+          <option name="timeStamp" value="68" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
+          <line>256</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
+          <line>190</line>
+          <option name="timeStamp" value="71" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

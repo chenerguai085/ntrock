@@ -13,16 +13,6 @@ import java.util.Date;
 public class NetLock extends LockBase implements Serializable {
 
     /**
-     * 开门的唯一标识  豪利士标识roomId ， 悉点标识门锁序列号 携住-RoomNo
-     */
-    private String lockId;
-
-    /**
-     * 扩展字段 目前  悉点-门锁的型号  携住-表示HotelId字段
-     */
-    private String lockOption;
-
-    /**
      * 开始时间
      */
     private Date startTime;
@@ -78,22 +68,6 @@ public class NetLock extends LockBase implements Serializable {
 
     public void setEndTime(Date endTime) {
         this.endTime = endTime;
-    }
-
-    public String getLockId() {
-        return lockId;
-    }
-
-    public void setLockId(String lockId) {
-        this.lockId = lockId;
-    }
-
-    public String getLockOption() {
-        return lockOption;
-    }
-
-    public void setLockOption(String lockOption) {
-        this.lockOption = lockOption;
     }
 
     public String getLockData() {

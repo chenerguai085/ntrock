@@ -34,7 +34,16 @@ public enum LockEnum {
     YUND_ADD_PASSWORD("/add_password"),
     YUND_UPDATE_PASSWORD("/update_password"),
     YUND_DELETE_PASSWORD("/delete_password"),
+    HONGRFACE_DOMAIN("http://39.108.175.59:8080"),
+    HONGR_FACE_IMAGEUPLOAD_API("/img/upload"),
+    HONGR_FACE_ADD_API("/person/staff/add"),
+    HONGR_FACE_DEL_API("/person/staff/delete"),
+    HONGR_FACE_LOGIN_API("/admin/login"),
+    HONGR_FACE_BATCHDEL_API("/person/staff/batch_delete"),
 
+    HONGR_FACE_USERNAME("睿沃科技"),  //获取token信息的用户名
+    HONGR_FACE_PASSWORD("RWkj1234"), //获取token信息的密码
+    HONGR_FACE_COMPANY("RW"),
     ;
 
 

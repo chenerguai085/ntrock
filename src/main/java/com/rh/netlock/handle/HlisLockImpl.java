@@ -64,7 +64,7 @@ public class HlisLockImpl {
      */
     public static String update(UpdateLock updateLock) throws Exception {
         if (StringUtils.isBlank(updateLock.getLockId()) || null == updateLock.getOpenTypeEnum() ||
-                null == updateLock.getEndTime())
+                null == updateLock.getEndTime() || StringUtils.isBlank(updateLock.getLockData()))
             throw new Exception(ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
 
         if (StringUtils.isBlank(updateLock.getDomain())) {
@@ -81,33 +81,24 @@ public class HlisLockImpl {
         String xml = null;
         Map<String, Object> resultMap = null;
 
-        if (null != updateLock.getOldLockData() && null == updateLock.getLockData()) {
-            map.put("CardData", updateLock.getOldLockData());
-            //表示修改过期时间  先删除后新增
-            xml = ParseUtil.buildXml(LockEnum.HLS_Delete_Openuser_REQ.getMsg(), map);
-            resultMap = WebServiceUtil.websReq(xml, updateLock.getDomain());
-            if (resultId.equals(resultMap.get("resultID").toString())) {
-                //删除成功  再新增
-                xml = ParseUtil.buildXml(LockEnum.HLS_Add_OpenUser_REQ.getMsg(), map);
-                resultMap = WebServiceUtil.websReq(xml, updateLock.getDomain());
-            }
-            if (!resultId.equals(resultMap.get("resultID").toString()))
-                throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + resultMap.get("description").toString());
-
-            return resultMap.get("resultXml").toString();
-        } else if (null != updateLock.getOldLockData() && null != updateLock.getLockData()) {
-
-            if (!updateLock.getOldLockData().equals(updateLock.getLockData())){
-                throw new Exception(ErrMsgEnum.ERR_API_UNSUPPORT.getMsg());
-            }
-
+        if (StringUtils.isBlank(updateLock.getOldLockData()) || updateLock.getLockData().equals(updateLock.getOldLockData())) {
             map.put("CardData", updateLock.getLockData());
+            //前端只传旧密码  表示只修改过期时间 直接调新增接口覆盖原来密码
+            xml = ParseUtil.buildXml(LockEnum.HLS_Add_OpenUser_REQ.getMsg(), map);
+            resultMap = WebServiceUtil.websReq(xml, updateLock.getDomain());
 
-            //豪力士门锁时没有 更新的接口  所以不管前端只想更新过期时间 还是更新密码都智能先删除后新增
+            if (!resultId.equals(resultMap.get("resultID").toString()))
+                throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + resultMap.get("description").toString());
+
+            return resultMap.get("resultXml").toString();
+        } else {
+            map.put("CardData", updateLock.getOldLockData());
+            //前端传两个不相同密码  删除旧密码 新加新密码
             xml = ParseUtil.buildXml(LockEnum.HLS_Delete_Openuser_REQ.getMsg(), map);
             resultMap = WebServiceUtil.websReq(xml, updateLock.getDomain());
             if (resultId.equals(resultMap.get("resultID").toString())) {
                 //删除成功  再新增
+                map.put("CardData", updateLock.getLockData());
                 xml = ParseUtil.buildXml(LockEnum.HLS_Add_OpenUser_REQ.getMsg(), map);
                 resultMap = WebServiceUtil.websReq(xml, updateLock.getDomain());
             }
@@ -115,10 +106,8 @@ public class HlisLockImpl {
                 throw new Exception(ErrMsgEnum.ERR.getMsg() + ":" + resultMap.get("description").toString());
 
             return resultMap.get("resultXml").toString();
+
         }
-
-
-        return null;
     }
 
 
@@ -221,4 +210,5 @@ public class HlisLockImpl {
                 null == netLock.getEndTime())
             throw new Exception(ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
     }
+
 }
