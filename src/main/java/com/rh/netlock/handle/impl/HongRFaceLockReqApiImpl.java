@@ -1,7 +1,8 @@
-package com.rh.netlock.handle;
+package com.rh.netlock.handle.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.rh.netlock.entity.DelLock;
+import com.rh.netlock.entity.LockBase;
 import com.rh.netlock.entity.NetLock;
 import com.rh.netlock.entity.Token;
 import com.rh.netlock.enums.ErrMsgEnum;
@@ -17,7 +18,7 @@ import java.util.Map;
  * @remark:
  * @date: 2019/12/16
  */
-public class HongRFaceLockImpl {
+public class HongRFaceLockReqApiImpl {
 
     final static String successCode = "0";
 
@@ -32,7 +33,7 @@ public class HongRFaceLockImpl {
         String upImgResult = HttpUtil.hongrCloudJsonPost(jsonObject.toString(), netLock.getDomain().concat(LockEnum.HONGR_FACE_IMAGEUPLOAD_API.getMsg()));
 
         if (!JsonHelper.isJson(upImgResult)) {
-            throw new Exception(ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg());
+            throw new Exception(ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg() + ": " + upImgResult);
         }
 
         //上传成功 取出返回图片url 新增员工接口使用
@@ -48,7 +49,7 @@ public class HongRFaceLockImpl {
             String addPersonResult = HttpUtil.hongrCloudJsonPost(buildAddJson(netLock, imgUrl), netLock.getDomain().concat(LockEnum.HONGR_FACE_ADD_API.getMsg()));
 
             if (!JsonHelper.isJson(addPersonResult)) {
-                throw new Exception(ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg());
+                throw new Exception(ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg() + ": " + addPersonResult);
             }
 
             JSONObject addPsRespJson = JSONObject.parseObject(addPersonResult);
@@ -76,14 +77,12 @@ public class HongRFaceLockImpl {
         delLock.setDomain(StringUtils.isBlank(delLock.getDomain()) ? LockEnum.HONGRFACE_DOMAIN.getMsg() : delLock.getDomain());
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("staff_id", "jpg");
+        jsonObject.put("staff_id",Integer.parseInt(delLock.getLockData()) );
 
-        String delResult = HttpUtil.doJsonPost(jsonObject.toString(), buildReqHeaders(), delLock.getDomain().concat(LockEnum.HONGR_FACE_DEL_API.getMsg()));
+        String delResult = HttpUtil.hongrCloudJsonPost(jsonObject.toString(), delLock.getDomain().concat(LockEnum.HONGR_FACE_DEL_API.getMsg()));
 
         if (!JsonHelper.isJson(delResult)) {
-            throw new Exception(ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg());
-            //如果服务端返回非json格式 说明可能是在未登入状态
-            // login(delLock.getDomain().concat(LockEnum.HONGR_FACE_DEL_API.getMsg()));
+            throw new Exception(ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg() + ": " + delResult);
         }
 
         JSONObject addPsRespJson = JSONObject.parseObject(delResult);
@@ -91,6 +90,35 @@ public class HongRFaceLockImpl {
         if (addPsRespJson.getString("code").equals(successCode)) {
 
             return delResult;
+        }
+
+        return null;
+    }
+
+
+    /**
+     *remark: 清除设备所有人脸信息
+     *@author:chenj
+     *@date: 2019/12/19
+     *@return java.lang.String
+     */
+    public static String clearAll(LockBase lockBase) throws Exception {
+        lockBase.setDomain(StringUtils.isBlank(lockBase.getDomain()) ? LockEnum.HONGRFACE_DOMAIN.getMsg() : lockBase.getDomain());
+
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("dev_sno",lockBase.getLockId());
+
+        String clearAllResult = HttpUtil.hongrCloudJsonPost(jsonObject.toString(), lockBase.getDomain().concat(LockEnum.HONGR_FACE_DEVICE_DELALL_API.getMsg()));
+
+        if (!JsonHelper.isJson(clearAllResult)) {
+            throw new Exception(ErrMsgEnum.REMOTE_RESP_ERRJSON.getMsg() + ": " + clearAllResult);
+        }
+
+        JSONObject addPsRespJson = JSONObject.parseObject(clearAllResult);
+
+        if (addPsRespJson.getString("code").equals(successCode)) {
+
+            return clearAllResult;
         }
 
         return null;
@@ -112,10 +140,11 @@ public class HongRFaceLockImpl {
         addJson.put("workNo", arrInfo[1]);
         //相当于酒店标记 56
         addJson.put("department", Integer.parseInt(netLock.getLockOption()));  //部门 睿沃酒店
-        addJson.put("job", 57);    //职业 房客
+        addJson.put("job", 69);    //职业 房客
         //相当于锁的标识  27
-        int[] groupArr = {Integer.parseInt(netLock.getLockId())};  //设备分组 S组
+       // int[] groupArr = {Integer.parseInt(netLock.getLockId())};  //设备分组 S组
 
+        int[] groupArr = {33,34};
 
         String[] imgArr = {imgUrl};  //设备分组 S组
 
@@ -124,37 +153,26 @@ public class HongRFaceLockImpl {
         return addJson.toString();
     }
 
-    /**
-     * remark: 封装请求头信息
-     *
-     * @return java.util.Map<java.lang.String, java.lang.String>
-     * @author:chenj
-     * @date: 2019/12/16
-     */
-    public static Map<String, String> buildReqHeaders() {
-        Map<String, String> headersMap = new HashMap<>();
-        headersMap.put("Content-Type", "application/json; charset=UTF-8");
-        return headersMap;
-    }
+
+//    /**
+//     *remark: 封装 清除设备所有人员信息
+//     *@author:chenj
+//     *@date: 2019/12/19
+//     *@return java.lang.String
+//     */
+//    private static String buildClearAllJson(LockBase lockBase) {
+//        JSONObject jsonObject = new JSONObject();
+//        jsonObject.put("dev_sno",lockBase.getLockId());
+//
+//        return jsonObject.toString();
+//    }
 
 
-    /**
-     * remark: 接口请求失败时重新调用调用登入
-     *
-     * @return java.lang.String
-     * @author:chenj
-     * @date: 2019/12/17
-     */
-    private static Token errLoginRetry(String url) throws Exception {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("company", LockEnum.HONGR_FACE_COMPANY.getMsg());
-        jsonObject.put("name", LockEnum.HONGR_FACE_USERNAME.getMsg());
-        jsonObject.put("password", LockEnum.HONGR_FACE_PASSWORD.getMsg());
-
-
-        Token token = HttpUtil.login(jsonObject.toString(), url);
-
-        return token;
+    public static void main(String[] args) throws Exception {
+        //79
+         DelLock delLock = new DelLock();
+         delLock.setLockData("79");
+         delete(delLock);
     }
 
 }

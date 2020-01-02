@@ -40,7 +40,7 @@ public enum LockEnum {
     HONGR_FACE_DEL_API("/person/staff/delete"),
     HONGR_FACE_LOGIN_API("/admin/login"),
     HONGR_FACE_BATCHDEL_API("/person/staff/batch_delete"),
-
+    HONGR_FACE_DEVICE_DELALL_API("/device/delete_all"), //清空设备所有人脸API
     HONGR_FACE_USERNAME("睿沃科技"),  //获取token信息的用户名
     HONGR_FACE_PASSWORD("RWkj1234"), //获取token信息的密码
     HONGR_FACE_COMPANY("RW"),

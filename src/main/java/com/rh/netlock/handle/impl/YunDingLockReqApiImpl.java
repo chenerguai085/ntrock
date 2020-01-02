@@ -1,4 +1,4 @@
-package com.rh.netlock.handle;
+package com.rh.netlock.handle.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.rh.netlock.entity.*;
@@ -13,7 +13,7 @@ import java.util.Date;
  * @remark:
  * @date: 2019/12/4
  */
-public class YunDingLockImpl {
+public class YunDingLockReqApiImpl {
 
     static final int thousand = 1000;
 

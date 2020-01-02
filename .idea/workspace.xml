@@ -2,19 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b9471fc3-c63a-4ba7-86b0-67e0ceb5fbcd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HongRFaceLockImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/XidianLockReqApiImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/service/HlisService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/service/LockCommonService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/service/XidianService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/rh/netlock/HlisLockTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/rh/netlock/HrFaceLockTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/NetLock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entity/NetLock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entrance/LockServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/entrance/LockServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/CompanyBusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/CompanyBusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/ErrMsgEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/ErrMsgEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/LockEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/enums/LockEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HlisLockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HlisLockImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/HttpUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/HttpUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/ParseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/ParseUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HlisLockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/HlisLockReqApiImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HongRFaceLockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/HongRFaceLockReqApiImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XieZFaceLockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/XieZFaceLockReqApiImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/YunDingLockImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/YunDingLockReqApiImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/ParamsVerifyUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/rh/netlock/util/ParamsVerifyUtil.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +75,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="D:/test/workspace/lemuji.auths" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
@@ -100,13 +104,13 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.HlisLockImpl">
-    <configuration name="DateHelper" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rh.netlock.util.DateHelper" />
+  <component name="RunManager" selected="Application.HrFaceLockTest">
+    <configuration name="HlisLockTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rh.netlock.HlisLockTest" />
       <module name="netlock" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.rh.netlock.util.*" />
+          <option name="PATTERN" value="com.rh.netlock.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -114,12 +118,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HlisLockImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rh.netlock.handle.HlisLockImpl" />
+    <configuration name="HlisService" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rh.netlock.handle.service.HlisService" />
       <module name="netlock" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.rh.netlock.handle.*" />
+          <option name="PATTERN" value="com.rh.netlock.handle.service.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -127,12 +131,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HongRFaceLockImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rh.netlock.handle.HongRFaceLockImpl" />
+    <configuration name="HongRFaceLockReqApiImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rh.netlock.handle.impl.HongRFaceLockReqApiImpl" />
       <module name="netlock" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.rh.netlock.handle.*" />
+          <option name="PATTERN" value="com.rh.netlock.handle.impl.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -140,12 +144,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HttpUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.rh.netlock.util.HttpUtil" />
+    <configuration name="HrFaceLockTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.rh.netlock.HrFaceLockTest" />
       <module name="netlock" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.rh.netlock.util.*" />
+          <option name="PATTERN" value="com.rh.netlock.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -158,7 +162,7 @@
       <module name="netlock" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.rh.netlock.enums.*" />
+          <option name="PATTERN" value="com.rh.netlock.entrance.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -168,11 +172,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HlisLockImpl" />
-        <item itemvalue="Application.HongRFaceLockImpl" />
-        <item itemvalue="Application.HttpUtil" />
-        <item itemvalue="Application.DateHelper" />
+        <item itemvalue="Application.HrFaceLockTest" />
+        <item itemvalue="Application.HlisLockTest" />
+        <item itemvalue="Application.HongRFaceLockReqApiImpl" />
         <item itemvalue="Application.LockServer" />
+        <item itemvalue="Application.HlisService" />
       </list>
     </recent_temporary>
   </component>
@@ -211,7 +215,13 @@
       <workItem from="1576025533938" duration="645000" />
       <workItem from="1576130215259" duration="20714000" />
       <workItem from="1576198883239" duration="14301000" />
-      <workItem from="1576457822714" duration="54761000" />
+      <workItem from="1576457822714" duration="75163000" />
+      <workItem from="1576732128479" duration="10154000" />
+      <workItem from="1576809706550" duration="2534000" />
+      <workItem from="1577070284399" duration="5270000" />
+      <workItem from="1577169487672" duration="674000" />
+      <workItem from="1577340394358" duration="1378000" />
+      <workItem from="1577434745891" duration="886000" />
     </task>
     <task id="LOCAL-00001" summary="新增携住人脸识别">
       <created>1575354876939</created>
@@ -276,7 +286,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576467478647</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="修改">
+      <created>1576579237600</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1576579237600</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,27 +323,27 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
-          <line>37</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/XidianLockReqApiImpl.java</url>
+          <line>30</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/entrance/LockServer.java</url>
-          <line>139</line>
+          <line>78</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/entrance/LockServer.java</url>
-          <line>25</line>
+          <line>23</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/entrance/LockServer.java</url>
-          <line>65</line>
+          <line>42</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/YunDingLockImpl.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/YunDingLockReqApiImpl.java</url>
           <line>29</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
@@ -336,19 +353,9 @@
           <option name="timeStamp" value="56" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HongRFaceLockImpl.java</url>
-          <line>158</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HongRFaceLockImpl.java</url>
-          <line>25</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/HongRFaceLockReqApiImpl.java</url>
+          <line>26</line>
           <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/util/HttpUtil.java</url>
-          <line>44</line>
-          <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/util/HttpUtil.java</url>
@@ -356,44 +363,69 @@
           <option name="timeStamp" value="61" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HongRFaceLockImpl.java</url>
-          <line>33</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/HongRFaceLockReqApiImpl.java</url>
+          <line>34</line>
           <option name="timeStamp" value="63" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/HongRFaceLockImpl.java</url>
-          <line>49</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/HongRFaceLockReqApiImpl.java</url>
+          <line>50</line>
           <option name="timeStamp" value="64" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
-          <line>311</line>
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/XidianLockReqApiImpl.java</url>
+          <line>228</line>
           <option name="timeStamp" value="65" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
-          <line>129</line>
-          <option name="timeStamp" value="66" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/XidianLockReqApiImpl.java</url>
+          <line>37</line>
+          <option name="timeStamp" value="73" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
-          <line>252</line>
-          <option name="timeStamp" value="67" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/service/XidianService.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="74" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
-          <line>253</line>
-          <option name="timeStamp" value="68" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/service/LockCommonService.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
-          <line>256</line>
-          <option name="timeStamp" value="70" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/XidianLockReqApiImpl.java</url>
+          <line>48</line>
+          <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/XidianLockImpl.java</url>
-          <line>190</line>
-          <option name="timeStamp" value="71" />
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/service/XidianService.java</url>
+          <line>87</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/XidianLockReqApiImpl.java</url>
+          <line>231</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/XidianLockReqApiImpl.java</url>
+          <line>200</line>
+          <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/HongRFaceLockReqApiImpl.java</url>
+          <line>76</line>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/service/HlisService.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/rh/netlock/handle/impl/HlisLockReqApiImpl.java</url>
+          <line>32</line>
+          <option name="timeStamp" value="82" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

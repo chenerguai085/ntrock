@@ -1,4 +1,4 @@
-package com.rh.netlock.handle;
+package com.rh.netlock.handle.impl;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -21,7 +21,7 @@ import java.util.Map;
  * @remark:
  * @date: 2019/12/3
  */
-public class XieZFaceLockImpl {
+public class XieZFaceLockReqApiImpl {
 
     final static String tokenSpReg = ",";
 

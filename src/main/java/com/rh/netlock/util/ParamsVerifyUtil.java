@@ -35,7 +35,7 @@ public class ParamsVerifyUtil {
 
             if (null == field.get(obj)) {
 
-                throw new Exception(ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
+                throw new Exception(fieldName + ErrMsgEnum.ERR_PARAMS_NULL.getMsg());
             }
 
         }

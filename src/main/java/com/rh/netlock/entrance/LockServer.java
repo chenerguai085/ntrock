@@ -3,15 +3,13 @@ package com.rh.netlock.entrance;
 import com.rh.netlock.entity.*;
 import com.rh.netlock.enums.CompanyBusEnum;
 import com.rh.netlock.enums.ErrMsgEnum;
-import com.rh.netlock.handle.HlisLockImpl;
-import com.rh.netlock.handle.XidianLockImpl;
-import com.rh.netlock.handle.XieZFaceLockImpl;
-import com.rh.netlock.handle.YunDingLockImpl;
-
+import com.rh.netlock.handle.impl.XieZFaceLockReqApiImpl;
+import com.rh.netlock.handle.impl.YunDingLockReqApiImpl;
+import com.rh.netlock.handle.service.LockCommonService;
 
 /**
  * @author:chenj
- * @remark:
+ * @remark:  对外暴露的方法
  * @date: 2019/11/15
  */
 public class LockServer {
@@ -29,28 +27,8 @@ public class LockServer {
         if (null == netLockIn.getCompanyBusEnum())
             throw new RuntimeException(ErrMsgEnum.EER_COMANY_NO.getMsg());
 
-        CompanyBusEnum channel = netLockIn.getCompanyBusEnum();
-        String result = "";
-        switch (channel) {
-            case XD_NETROCK:
-                result = XidianLockImpl.add(netLockIn);
 
-                return result;
-            case HLS_NETROCK:
-                result = HlisLockImpl.add(netLockIn);
-                return result;
-            case XIEZ_FACEROCK:
-                result = XieZFaceLockImpl.add(netLockIn);
-                return result;
-            case YUNDING_NETROCK:
-                result = YunDingLockImpl.add(netLockIn);
-                return result;
-            default:
-                break;
-        }
-
-
-        return result;
+        return LockCommonService.add(netLockIn);
     }
 
 
@@ -62,32 +40,14 @@ public class LockServer {
      * @date: 2019/11/29
      */
     public static String delete(DelLock delLock) throws Exception {
-        String result = "";
         if (null == delLock)
             throw new Exception(ErrMsgEnum.ERR_OBJECTISNULL.getMsg());
 
         if (null == delLock.getCompanyBusEnum())
             throw new Exception(ErrMsgEnum.EER_COMANY_NO.getMsg());
 
-        CompanyBusEnum channel = delLock.getCompanyBusEnum();
 
-        switch (channel) {
-            case XD_NETROCK:
-                result = XidianLockImpl.delete(delLock);
-                return result;
-            case HLS_NETROCK:
-                result = HlisLockImpl.delete(delLock);
-                return result;
-            case XIEZ_FACEROCK:
-                return null;
-            case YUNDING_NETROCK:
-                result = YunDingLockImpl.delete(delLock);
-                return result;
-            default:
-                break;
-        }
-
-        return result;
+        return LockCommonService.delete(delLock);
     }
 
     /**
@@ -104,28 +64,7 @@ public class LockServer {
         if (null == updateLock.getCompanyBusEnum())
             throw new RuntimeException(ErrMsgEnum.EER_COMANY_NO.getMsg());
 
-        CompanyBusEnum channel = updateLock.getCompanyBusEnum();
-        String result = "";
-        switch (channel) {
-            case XD_NETROCK:
-                result = XidianLockImpl.update(updateLock);
-
-                return result;
-            case HLS_NETROCK:
-                result = HlisLockImpl.update(updateLock);
-
-                return result;
-            case XIEZ_FACEROCK:
-                return "";
-            case YUNDING_NETROCK:
-                result = YunDingLockImpl.update(updateLock);
-
-                return result;
-            default:
-                break;
-        }
-
-        return result;
+        return LockCommonService.update(updateLock);
     }
 
 
@@ -143,20 +82,7 @@ public class LockServer {
         if (null == lockBase.getCompanyBusEnum())
             throw new RuntimeException(ErrMsgEnum.EER_COMANY_NO.getMsg());
 
-        CompanyBusEnum channel = lockBase.getCompanyBusEnum();
-        String result = "";
-        switch (channel) {
-            case XD_NETROCK:
-                break;
-            case HLS_NETROCK:
-                result = HlisLockImpl.clearAll(lockBase);
-                return result;
-            case XIEZ_FACEROCK:
-                break;
-            default:
-                break;
-        }
-        return result;
+        return LockCommonService.clearAll(lockBase);
     }
 
     /**
@@ -184,11 +110,11 @@ public class LockServer {
 
                 break;
             case XIEZ_FACEROCK:
-                token = XieZFaceLockImpl.getToken(user);
+                token = XieZFaceLockReqApiImpl.getToken(user);
 
                 return token;
             case YUNDING_NETROCK:
-                token = YunDingLockImpl.getToken(user);
+                token = YunDingLockReqApiImpl.getToken(user);
 
                 return token;
             default:
@@ -221,4 +147,5 @@ public class LockServer {
 //
 //        managerHandle.remoteOpen(netRockIn.getCompanyBusEnum().getCode().toString(), netRockIn);
 //    }
+
 }
